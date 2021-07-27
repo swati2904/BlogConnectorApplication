@@ -6,6 +6,9 @@ const app = express();
 //Database connection
 connectDB();
 
+// Init middleware
+app.use(express.json());
+
 app.get("/", (req, res) => res.send("GET API working"));
 
 // Define routes
