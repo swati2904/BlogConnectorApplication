@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const ProfileSchema = new mongoose.Schema({
-  //creating the reference of user model
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
@@ -58,7 +57,6 @@ const ProfileSchema = new mongoose.Schema({
       },
     },
   ],
-
   education: [
     {
       school: {
@@ -89,18 +87,17 @@ const ProfileSchema = new mongoose.Schema({
       },
     },
   ],
-
   social: {
-    linkedin: {
+    youtube: {
       type: String,
     },
     twitter: {
       type: String,
     },
-    youtube: {
+    facebook: {
       type: String,
     },
-    facebook: {
+    linkedin: {
       type: String,
     },
     instagram: {
