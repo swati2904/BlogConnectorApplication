@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import "./App.css";
-
+import Navbar from "./components/blogLayout/Navbar";
+import Homepage from "./components/blogLayout/Homepage";
 const App = () => (
   <Fragment>
-    <h1> App</h1>
+    <Navbar />
+    <Homepage />
   </Fragment>
 );
 

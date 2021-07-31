@@ -1,0 +1,63 @@
+/* Global Styles */
+:root {
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #f4f4f4;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+}
+
+h-100 {
+  height: 100%;
+}
+
+w-100 {
+  width: 100%;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 10vh;
+}
+
+.navbar a {
+  color: #fff;
+  padding: 0.45rem;
+  margin: 0 0.25rem;
+}
+
+/* Homepage */
+
+.homepage {
+  height: 90vh;
+  background-color: black;
+}
+
+.homepage span {
+  font-family: "Style Script", cursive;
+  color: #7a3a2d;
+}
+
+.homepage-background {
+  height: 400px;
+  width: 400px;
+  opacity: 0.5;
+}
