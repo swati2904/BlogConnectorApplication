@@ -1,5 +1,6 @@
 import React from "react";
 import blogImage from "../../assets/blog.jpg";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
@@ -13,15 +14,15 @@ const Homepage = () => {
             </div>
             <p>
               Create a blog, share posts and maintain your portfolio which helps
-              to other developer...
+              to other developers...
             </p>
             <div class='buttons'>
-              <a href='register.html' class='btn btn-primary m-2'>
+              <Link to='/signup' class='btn btn-primary m-2'>
                 Sign Up
-              </a>
-              <a href='login.html' class='btn btn-light'>
+              </Link>
+              <Link to='/login' class='btn btn-light'>
                 Login
-              </a>
+              </Link>
             </div>
           </div>
           <div className='col-4 rounded float-end align-items-center d-flex'>
