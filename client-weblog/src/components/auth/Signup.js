@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
-// import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 
 const Signup = () => {
   const [formInput, setFormInput] = useState({
@@ -70,7 +70,9 @@ const Signup = () => {
                 ]}
               >
                 <Input
-                  // prefix={<UserOutlined className='site-form-item-icon' />}
+                  prefix={
+                    <UserOutlined className='site-form-item-icon text-secondary' />
+                  }
                   value={formInput.name}
                   onChange={(e) => onInputChange("name", e.target.value)}
                 />
@@ -84,9 +86,16 @@ const Signup = () => {
                     required: true,
                     message: "Please enter your email address!",
                   },
+                  {
+                    pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                    message: "Please enter valid email address!",
+                  },
                 ]}
               >
                 <Input
+                  prefix={
+                    <MailOutlined className='site-form-item-icon text-secondary' />
+                  }
                   value={formInput.email}
                   onChange={(e) => onInputChange("email", e.target.value)}
                 />
@@ -107,6 +116,9 @@ const Signup = () => {
                 ]}
               >
                 <Input.Password
+                  prefix={
+                    <LockOutlined className='site-form-item-icon text-secondary' />
+                  }
                   value={formInput.password}
                   onChange={(e) => onInputChange("password", e.target.value)}
                 />
@@ -123,6 +135,9 @@ const Signup = () => {
                 ]}
               >
                 <Input.Password
+                  prefix={
+                    <LockOutlined className='site-form-item-icon text-secondary' />
+                  }
                   value={formInput.confirmPassowrd}
                   onChange={(e) =>
                     onInputChange("confirmPassowrd", e.target.value)

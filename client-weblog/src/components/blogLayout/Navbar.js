@@ -1,12 +1,12 @@
 import React from "react";
-import { AliwangwangOutlined } from "@ant-design/icons";
+import { AliwangwangFilled } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className=' navbar bg-success bg-gradient d-flex justify-content-between  py-2 px-4 border-bottom   '>
       <div className='d-flex'>
-        <AliwangwangOutlined className='fs-2 text-white' />{" "}
+        <AliwangwangFilled className='fs-2 text-white' />{" "}
         <h3>
           {" "}
           <Link to='/'>BlogConnector</Link>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
+import { LockOutlined, MailOutlined } from "@ant-design/icons";
 
 const Login = () => {
   const onFinish = (values) => {
@@ -9,6 +10,15 @@ const Login = () => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+  };
+
+  const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
   };
 
   return (
@@ -21,13 +31,8 @@ const Login = () => {
             </h2>
 
             <Form
+              {...layout}
               name='basic'
-              labelCol={{
-                span: 8,
-              }}
-              wrapperCol={{
-                span: 16,
-              }}
               initialValues={{
                 remember: true,
               }}
@@ -44,7 +49,11 @@ const Login = () => {
                   },
                 ]}
               >
-                <Input />
+                <Input
+                  prefix={
+                    <MailOutlined className='site-form-item-icon text-secondary' />
+                  }
+                />
               </Form.Item>
 
               <Form.Item
@@ -57,7 +66,11 @@ const Login = () => {
                   },
                 ]}
               >
-                <Input.Password />
+                <Input.Password
+                  prefix={
+                    <LockOutlined className='site-form-item-icon text-secondary' />
+                  }
+                />
               </Form.Item>
 
               <Form.Item
