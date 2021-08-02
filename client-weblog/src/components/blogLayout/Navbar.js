@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div className=' navbar bg-success bg-gradient d-flex justify-content-between  py-2 px-4 border-bottom   '>
       <div className='d-flex'>
-        <AliwangwangOutlined style={{ color: "white", fontSize: "2rem" }} />{" "}
+        <AliwangwangOutlined className='fs-2 text-white' />{" "}
         <h3>
           {" "}
           <Link to='/'>BlogConnector</Link>

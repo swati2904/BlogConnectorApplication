@@ -26,7 +26,11 @@ const Homepage = () => {
             </div>
           </div>
           <div className='col-4 rounded float-end align-items-center d-flex'>
-            <img class='homepage-background' src={blogImage} alt='homepage' />
+            <img
+              class='homepage-background rounded-circle'
+              src={blogImage}
+              alt='homepage'
+            />
           </div>
         </div>
       </div>
