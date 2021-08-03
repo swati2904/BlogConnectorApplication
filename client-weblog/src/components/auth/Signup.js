@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import { addToast } from "../../actions/toast";
@@ -8,7 +8,7 @@ import { signup } from "../../actions/auth";
 
 import PropTypes from "prop-types";
 
-const Signup = ({ addToast, signup }) => {
+const Signup = ({ addToast, signup, isAuthenticated }) => {
   const [formInput, setFormInput] = useState({
     name: "",
     email: "",
@@ -42,6 +42,11 @@ const Signup = ({ addToast, signup }) => {
     console.log("Failed:", errorInfo);
   };
 
+  // page redirect if successfully signup
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
   return (
     <>
       <div className=' container auth-page align-items-center'>
@@ -178,6 +183,11 @@ const Signup = ({ addToast, signup }) => {
 Signup.propTypes = {
   addToast: PropTypes.func.isRequired,
   signup: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { addToast, signup })(Signup);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { addToast, signup })(Signup);

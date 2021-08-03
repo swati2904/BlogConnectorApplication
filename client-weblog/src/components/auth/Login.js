@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
 import Password from "antd/lib/input/Password";
 
-const Login = ({ login }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formInput, setFormInput] = useState({
     email: "",
     password: "",
@@ -35,6 +35,12 @@ const Login = ({ login }) => {
       span: 16,
     },
   };
+
+  // page redirect if successfully login
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     <>
@@ -123,6 +129,11 @@ const Login = ({ login }) => {
 
 Login.prototype = {
   login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { login })(Login);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);
