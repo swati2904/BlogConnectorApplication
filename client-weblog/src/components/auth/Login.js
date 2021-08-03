@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "../../actions/auth";
+import Password from "antd/lib/input/Password";
 
-const Login = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
+const Login = ({ login }) => {
+  const [formInput, setFormInput] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formInput;
+
+  const onInputChange = (key, value) => {
+    setFormInput({ ...formInput, [key]: value });
+  };
+
+  const onFinish = async (values) => {
+    login(email, password);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -42,34 +57,38 @@ const Login = () => {
               <Form.Item
                 label='Email'
                 name='email'
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter your email address!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Please enter your email address!",
+                //   },
+                // ]}
               >
                 <Input
                   prefix={
                     <MailOutlined className='site-form-item-icon text-secondary' />
                   }
+                  value={formInput.email}
+                  onChange={(e) => onInputChange("email", e.target.value)}
                 />
               </Form.Item>
 
               <Form.Item
                 label='Password'
                 name='password'
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter the password!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Please enter the password!",
+                //   },
+                // ]}
               >
                 <Input.Password
                   prefix={
                     <LockOutlined className='site-form-item-icon text-secondary' />
                   }
+                  value={formInput.password}
+                  onChange={(e) => onInputChange("password", e.target.value)}
                 />
               </Form.Item>
 
@@ -82,7 +101,8 @@ const Login = () => {
                 <Button
                   type='primary'
                   htmlType='login'
-                  className='shadow-lg   rounded '
+                  className='shadow-lg rounded '
+                  value='login'
                 >
                   Login
                 </Button>
@@ -101,4 +121,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.prototype = {
+  login: PropTypes.func.isRequired,
+};
+
+export default connect(null, { login })(Login);
