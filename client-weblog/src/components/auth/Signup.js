@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import { addToast } from "../../actions/toast";
+import { signup } from "../../actions/auth";
+
 import PropTypes from "prop-types";
 
-const Signup = ({ addToast }) => {
+const Signup = ({ addToast, signup }) => {
   const [formInput, setFormInput] = useState({
     name: "",
     email: "",
@@ -22,6 +24,8 @@ const Signup = ({ addToast }) => {
     },
   };
 
+  const { name, email, password } = formInput;
+
   const onInputChange = (key, value) => {
     setFormInput({ ...formInput, [key]: value });
   };
@@ -30,7 +34,7 @@ const Signup = ({ addToast }) => {
     if (formInput.password !== formInput.confirmPassowrd) {
       addToast("Entered password do not match ", "danger");
     } else {
-      console.log(formInput);
+      signup({ name, email, password });
     }
   };
 
@@ -65,12 +69,12 @@ const Signup = ({ addToast }) => {
               <Form.Item
                 label='Name'
                 name='name'
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter your name!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Please enter your name!",
+                //   },
+                // ]}
               >
                 <Input
                   prefix={
@@ -84,16 +88,16 @@ const Signup = ({ addToast }) => {
               <Form.Item
                 label='Email'
                 name='email'
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter your email address!",
-                  },
-                  {
-                    pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                    message: "Please enter valid email address!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Please enter your email address!",
+                //   },
+                //   {
+                //     pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                //     message: "Please enter valid email address!",
+                //   },
+                // ]}
               >
                 <Input
                   prefix={
@@ -107,16 +111,16 @@ const Signup = ({ addToast }) => {
               <Form.Item
                 label='Password'
                 name='password'
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter the password!",
-                  },
-                  {
-                    min: 4,
-                    message: "Password cannot be less than 4 characters",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Please enter the password!",
+                //   },
+                //   {
+                //     min: 4,
+                //     message: "Password cannot be less than 4 characters",
+                //   },
+                // ]}
               >
                 <Input.Password
                   prefix={
@@ -130,12 +134,12 @@ const Signup = ({ addToast }) => {
               <Form.Item
                 label='Confirm password'
                 name='confirmPassword'
-                rules={[
-                  {
-                    required: true,
-                    message: "Confirm  password",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Confirm  password",
+                //   },
+                // ]}
               >
                 <Input.Password
                   prefix={
@@ -173,6 +177,7 @@ const Signup = ({ addToast }) => {
 
 Signup.propTypes = {
   addToast: PropTypes.func.isRequired,
+  signup: PropTypes.array.isRequired,
 };
 
-export default connect(null, { addToast })(Signup);
+export default connect(null, { addToast, signup })(Signup);
