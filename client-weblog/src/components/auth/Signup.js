@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
+import { connect } from "react-redux";
+import { addToast } from "../../actions/toast";
+import PropTypes from "prop-types";
 
-const Signup = () => {
+const Signup = ({ addToast }) => {
   const [formInput, setFormInput] = useState({
     name: "",
     email: "",
@@ -23,9 +26,9 @@ const Signup = () => {
     setFormInput({ ...formInput, [key]: value });
   };
 
-  const onFinish = (e) => {
+  const onFinish = async (e) => {
     if (formInput.password !== formInput.confirmPassowrd) {
-      console.log("password not  matched");
+      addToast("Entered password do not match ", "danger");
     } else {
       console.log(formInput);
     }
@@ -168,4 +171,8 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+Signup.propTypes = {
+  addToast: PropTypes.func.isRequired,
+};
+
+export default connect(null, { addToast })(Signup);

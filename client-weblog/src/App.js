@@ -5,18 +5,26 @@ import Navbar from "./components/blogLayout/Navbar";
 import Homepage from "./components/blogLayout/Homepage";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
+import Toast from "./components/blogLayout/Toast";
+
+//redux
+import { Provider } from "react-redux";
+import store from "./store";
 
 const App = () => (
-  <Router>
-    <Fragment>
-      <Navbar />
-      <Route exact path='/' component={Homepage} />
-      <Switch>
-        <Route exact path='/signup' component={Signup} />
-        <Route exact path='/login' component={Login} />
-      </Switch>
-    </Fragment>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <Fragment>
+        <Navbar />
+        <Route exact path='/' component={Homepage} />
+        <Toast />
+        <Switch>
+          <Route exact path='/signup' component={Signup} />
+          <Route exact path='/login' component={Login} />
+        </Switch>
+      </Fragment>
+    </Router>
+  </Provider>
 );
 
 export default App;
