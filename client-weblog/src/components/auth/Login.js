@@ -5,7 +5,6 @@ import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
-import Password from "antd/lib/input/Password";
 
 const Login = ({ login, isAuthenticated }) => {
   const [formInput, setFormInput] = useState({
@@ -19,7 +18,7 @@ const Login = ({ login, isAuthenticated }) => {
     setFormInput({ ...formInput, [key]: value });
   };
 
-  const onFinish = async (values) => {
+  const onFinish = async (e) => {
     login(email, password);
   };
 
@@ -108,7 +107,7 @@ const Login = ({ login, isAuthenticated }) => {
                   type='primary'
                   htmlType='login'
                   className='shadow-lg rounded '
-                  value='login'
+                  value='Login'
                 >
                   Login
                 </Button>

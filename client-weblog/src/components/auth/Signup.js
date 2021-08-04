@@ -47,6 +47,7 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
+
   return (
     <>
       <div className=' container auth-page align-items-center'>
@@ -167,7 +168,7 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
                   type='primary'
                   htmlType='signin'
                   className='shadow-lg rounded '
-                  value='signup'
+                  value='Signup'
                 >
                   signIn
                 </Button>
@@ -182,7 +183,7 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
 
 Signup.propTypes = {
   addToast: PropTypes.func.isRequired,
-  signup: PropTypes.array.isRequired,
+  signup: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
 };
 

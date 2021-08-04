@@ -6,6 +6,7 @@ import {
   AUTH_FAILED,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
 } from "./types";
 import { addToast } from "./toast";
 import setToken from "../utils/setToken";
@@ -91,4 +92,10 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_FAIL,
     });
   }
+};
+
+// Logout
+
+export const logout = () => (dispatch) => {
+  dispatch({ type: LOGOUT });
 };

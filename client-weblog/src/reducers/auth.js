@@ -5,6 +5,7 @@ import {
   AUTH_FAILED,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
 } from "../actions/types";
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
   user: null,
 };
 
-export default function (state = initialState, action) {
+export default function authReducer(state = initialState, action) {
   const { payload, type } = action;
 
   switch (type) {
@@ -38,6 +39,7 @@ export default function (state = initialState, action) {
     case SIGNUP_FAIL:
     case AUTH_FAILED:
     case LOGIN_FAIL:
+    case LOGOUT:
       localStorage.removeItem("token");
       return {
         ...state,
