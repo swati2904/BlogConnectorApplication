@@ -6,8 +6,10 @@ import Homepage from "./components/blogLayout/Homepage";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Toast from "./components/blogLayout/Toast";
+import Admin from "./components/dashboard/Admin";
 import { loadUser } from "./actions/auth";
 import setToken from "./utils/setToken";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 //redux
 import { Provider } from "react-redux";
@@ -32,6 +34,7 @@ const App = () => {
             <Switch>
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/login' component={Login} />
+              <PrivateRoute exact path='/admin-profile' component={Admin} />
             </Switch>
           </div>
         </Fragment>

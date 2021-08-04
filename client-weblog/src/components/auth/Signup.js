@@ -45,7 +45,7 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
   // page redirect if successfully signup
 
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to='/admin-profile' />;
   }
 
   return (
