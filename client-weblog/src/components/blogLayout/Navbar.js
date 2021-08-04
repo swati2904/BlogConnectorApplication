@@ -4,15 +4,21 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-import { LogoutOutlined } from "@ant-design/icons";
+import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <div>
+    <div className='d-flex align-items-center'>
       <li>
-        <a onClick={logout} href='#!'>
+        <Link to='/admin-profile' className='d-flex align-items-center'>
+          <UserOutlined className='fs-5 mx-1' />
+          Admin
+        </Link>
+      </li>
+      <li>
+        <a onClick={logout} href='#!' className='d-flex align-items-center'>
           {" "}
-          <LogoutOutlined className='fs-3 text-white mx-1' />
+          <LogoutOutlined className='fs-5 mx-1' />
           {/* <span className='hide-sm'>Logout</span> */}
           Logout
         </a>
@@ -22,10 +28,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <div className='d-flex '>
       <li>
-        <Link to='signup'>Sign Up</Link>
+        <Link to='/signup'>Sign Up</Link>
       </li>
       <li>
-        <Link to='login'>Login</Link>
+        <Link to='/login'>Login</Link>
       </li>
     </div>
   );
@@ -34,7 +40,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <h3>
         {" "}
         <Link to='/' className='d-flex align-items-center'>
-          <AliwangwangFilled className='fs-1 text-white' /> BlogConnector
+          <AliwangwangFilled className='fs-2 text-white' /> BlogConnector
         </Link>
       </h3>
       <div>{!loading && <>{isAuthenticated ? authLinks : guestLinks} </>}</div>

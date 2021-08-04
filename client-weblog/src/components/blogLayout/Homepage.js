@@ -1,8 +1,13 @@
 import React from "react";
 import blogImage from "../../assets/blog.jpg";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const Homepage = () => {
+const Homepage = ({ isAuthenticated }) => {
+  if (isAuthenticated) {
+    return <Redirect to='/admin-profile' />;
+  }
   return (
     <>
       <div className='homepage  '>
@@ -38,4 +43,12 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+Homepage.propTypes = {
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(Homepage);
