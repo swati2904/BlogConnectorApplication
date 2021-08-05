@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/swati2904/BlogConnectorApplication#readme",
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.6",
     "express": "^4.17.1",

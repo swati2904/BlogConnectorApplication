@@ -9,7 +9,7 @@ const Toast = ({ toasts }) =>
     <div
       key={toast.id}
       // position-absolute top-1 end-0
-      className={` float-start alert alert-${toast.toastType}`}
+      className={` float-end alert alert-${toast.toastType}`}
     >
       {toast.msg}
     </div>

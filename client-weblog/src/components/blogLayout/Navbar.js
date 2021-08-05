@@ -36,7 +36,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </div>
   );
   return (
-    <div className='navbar bg-success bg-gradient d-flex justify-content-between  py-2 px-4 border-bottom list-unstyled  align-content-center'>
+    <div className='navbar bg-success w-100 bg-gradient d-flex justify-content-between  py-2 px-4 border-bottom list-unstyled  align-content-center'>
       <h3>
         {" "}
         <Link to='/' className='d-flex align-items-center'>

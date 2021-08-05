@@ -10,6 +10,7 @@ import Admin from "./components/dashboard/Admin";
 import { loadUser } from "./actions/auth";
 import setToken from "./utils/setToken";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import CreateProfile from "./components/userProfile/CreateProfile";
 
 //redux
 import { Provider } from "react-redux";
@@ -30,11 +31,16 @@ const App = () => {
           <Navbar />
           <Route exact path='/' component={Homepage} />
           <Toast />
-          <div style={{ height: "90vh" }}>
+          <div className='body-content'>
             <Switch>
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/login' component={Login} />
               <PrivateRoute exact path='/admin-profile' component={Admin} />
+              <PrivateRoute
+                exact
+                path='/create-profile'
+                component={CreateProfile}
+              />
             </Switch>
           </div>
         </Fragment>
