@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Form, Input, Button, Layout } from "antd";
+import { Form, Input, Button, Layout, Select } from "antd";
 import { createProfile } from "../../actions/profile";
 import { Link, withRouter } from "react-router-dom";
 
@@ -35,6 +35,8 @@ const CreateProfile = ({ createProfile, history }) => {
     youtube: "",
     instagram: "",
   });
+  const { Option } = Select;
+
   const [wrapSocialInputs, toggleSocialInputs] = useState(false);
 
   const { Content } = Layout;
@@ -187,7 +189,7 @@ const CreateProfile = ({ createProfile, history }) => {
                   }
                 />
               </Form.Item>
-              <Form.Item
+              {/* <Form.Item
                 label={
                   <span>
                     <BookFilled className='site-form-item-icon text-secondary fs-4 mx-2' />
@@ -218,8 +220,8 @@ const CreateProfile = ({ createProfile, history }) => {
                   <option value='Intern'>Intern</option>
                   <option value='Other'>Other</option>
                 </select>
-              </Form.Item>
-              {/* <Form.Item
+              </Form.Item> */}
+              <Form.Item
                 label={
                   <span>
                     <BookFilled className='site-form-item-icon text-secondary fs-4 mx-2' />
@@ -235,11 +237,12 @@ const CreateProfile = ({ createProfile, history }) => {
               >
                 <Select
                   placeholder='Select a option and change input text above'
-                  value={formInput.status}
-                  onChange={(e) => onInputChange("status", e.target.value)}
+                  // value={formInput.status}
+                  onChange={(value) => {
+                    setFormInput({ status: value });
+                  }}
                   name='status'
                 >
-                  
                   <Option value='Developer'>Developer</Option>
                   <Option value='Junior Developer'>Junior Developer</Option>
                   <Option value='Senior Developer'>Senior Developer</Option>
@@ -251,7 +254,7 @@ const CreateProfile = ({ createProfile, history }) => {
                   <Option value='Intern'>Intern</Option>
                   <Option value='Other'>Other</Option>
                 </Select>
-              </Form.Item> */}
+              </Form.Item>
               <small className=' fs-6 text-secondary'>Social Network</small>{" "}
               <hr></hr>
               <div>
@@ -347,17 +350,24 @@ const CreateProfile = ({ createProfile, history }) => {
                   </Form.Item>
                 </>
               )}
-              <Button
-                type='primary'
-                htmlType='submit'
-                className='shadow-lg rounded my-1'
-                value='Submit'
+              <Form.Item
+                wrapperCol={{
+                  offset: 8,
+                  span: 16,
+                }}
               >
-                Submit
-              </Button>
-              <Link className='btn btn-light my-1' to='/admin-profile'>
-                Go Back{" "}
-              </Link>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  className='shadow-lg rounded my-3 mx-3'
+                  value='submit'
+                >
+                  Submit
+                </Button>
+                <Link className='btn btn-light my-1' to='/admin-profile'>
+                  Go Back{" "}
+                </Link>
+              </Form.Item>
             </Form>
           </div>
         </Content>
