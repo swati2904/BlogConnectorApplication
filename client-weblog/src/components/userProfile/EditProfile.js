@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Form, Input, Button, Layout } from "antd";
-import { createProfile } from "../../actions/profile";
+import { Layout } from "antd";
+import { Form, Input, Button } from "antd";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
 import { Link, withRouter } from "react-router-dom";
 
 import {
@@ -20,7 +21,12 @@ import {
   BookFilled,
 } from "@ant-design/icons";
 
-const CreateProfile = ({ createProfile, history }) => {
+const EditProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history,
+}) => {
   const [formInput, setFormInput] = useState({
     company: "",
     website: "",
@@ -37,25 +43,30 @@ const CreateProfile = ({ createProfile, history }) => {
   });
   const [wrapSocialInputs, toggleSocialInputs] = useState(false);
 
+  useEffect(() => {
+    getCurrentProfile();
+
+    setFormInput({
+      company: loading || !profile.company ? "" : profile.company,
+      website: loading || !profile.website ? "" : profile.website,
+      location: loading || !profile.location ? "" : profile.location,
+      status: loading || !profile.status ? "" : profile.status,
+      skills: loading || !profile.skills ? "" : profile.skills.join(","),
+      githubusername:
+        loading || !profile.githubusername ? "" : profile.githubusername,
+      bio: loading || !profile.bio ? "" : profile.bio,
+      twitter: loading || !profile.social ? "" : profile.social.twitter,
+      facebook: loading || !profile.social ? "" : profile.social.facebook,
+      linkedin: loading || !profile.social ? "" : profile.social.linkedin,
+      youtube: loading || !profile.social ? "" : profile.social.youtube,
+      instagram: loading || !profile.social ? "" : profile.social.instagram,
+    });
+  }, [loading, getCurrentProfile, profile]);
+
   const { Content } = Layout;
 
-  // const {
-  //   company,
-  //   website,
-  //   location,
-  //   status,
-  //   skills,
-  //   githubusername,
-  //   bio,
-  //   twitter,
-  //   facebook,
-  //   linkedin,
-  //   youtube,
-  //   instagram,
-  // } = formInput;
-
   const onFinish = (e) => {
-    createProfile(formInput, history);
+    createProfile(formInput, history, true);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -79,10 +90,7 @@ const CreateProfile = ({ createProfile, history }) => {
     <Layout>
       <Layout className='site-layout'>
         <Content>
-          <div
-            className='site-layout-background container'
-            // style={{ padding: 24, textAlign: "center" }}
-          >
+          <div className='site-layout-background container'>
             <h3 className='fw-bolder text-black fs-2'> ADMIN PROFILE</h3>
             <small className=' fs-6 text-secondary'>Tech Infomation</small>{" "}
             <hr></hr>
@@ -145,12 +153,6 @@ const CreateProfile = ({ createProfile, history }) => {
                   </span>
                 }
                 name='skills'
-                rules={[
-                  {
-                    required: true,
-                    message: "This field is important",
-                  },
-                ]}
               >
                 <Input
                   value={formInput.skills}
@@ -219,39 +221,6 @@ const CreateProfile = ({ createProfile, history }) => {
                   <option value='Other'>Other</option>
                 </select>
               </Form.Item>
-              {/* <Form.Item
-                label={
-                  <span>
-                    <BookFilled className='site-form-item-icon text-secondary fs-4 mx-2' />
-                    Select Profession
-                  </span>
-                }
-                rules={[
-                  {
-                    required: true,
-                    message: "This field is important",
-                  },
-                ]}
-              >
-                <Select
-                  placeholder='Select a option and change input text above'
-                  value={formInput.status}
-                  onChange={(e) => onInputChange("status", e.target.value)}
-                  name='status'
-                >
-                  
-                  <Option value='Developer'>Developer</Option>
-                  <Option value='Junior Developer'>Junior Developer</Option>
-                  <Option value='Senior Developer'>Senior Developer</Option>
-                  <Option value='Manager'>Manager</Option>
-                  <Option value='Student or Learning'>
-                    Student or Learning
-                  </Option>
-                  <Option value='Instructor'>Instructor or Teacher</Option>
-                  <Option value='Intern'>Intern</Option>
-                  <Option value='Other'>Other</Option>
-                </Select>
-              </Form.Item> */}
               <small className=' fs-6 text-secondary'>Social Network</small>{" "}
               <hr></hr>
               <div>
@@ -351,7 +320,7 @@ const CreateProfile = ({ createProfile, history }) => {
                 type='primary'
                 htmlType='submit'
                 className='shadow-lg rounded my-1'
-                value='Submit'
+                value='submit'
               >
                 Submit
               </Button>
@@ -366,8 +335,16 @@ const CreateProfile = ({ createProfile, history }) => {
   );
 };
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
 };
 
-export default connect(null, { createProfile })(withRouter(CreateProfile));
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  withRouter(EditProfile)
+);

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
-import { Spin } from "antd";
+import { Spin, Layout } from "antd";
+import { ProfileAction } from "./ProfileAction";
 
 const Admin = ({
   getCurrentProfile,
@@ -12,16 +13,49 @@ const Admin = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []);
+  }, [getCurrentProfile]);
+
+  const { Content, Sider } = Layout;
+
   return loading && profile === null ? (
     <Spin tip='Loading...' className='position-absolute top-50 start-50'></Spin>
   ) : (
     <>
-      <div className='container mt-4'>
-        <h1 className='large text-secondary'> ADMIN PROFILE</h1>
-        <p className='text-black-50 '> Welcome {user && user.name}</p>
+      <Layout>
         {profile !== null ? (
-          <> has </>
+          <>
+            <Sider
+              className='site-layout-background'
+              style={{
+                overflow: "auto",
+                height: "100vh",
+                position: "fixed",
+                left: 0,
+              }}
+            >
+              <img
+                className='rounded-circle mx-auto d-block my-3'
+                style={{ height: "25%", width: "80%" }}
+                src={user && user.avatar}
+                alt=''
+              />
+
+              <div className=' text-center bold'>
+                <p className='text-success  fs-3'> {user && user.name}</p>
+                <p className='text-white-50'> {user && user.email} </p>
+
+                <button type='button' className='btn btn-dark btn-sm'>
+                  {profile && profile.status}
+                </button>
+              </div>
+
+              <ul className='px-0 w-100  my-3'>
+                <li className='w-100 text-center'>
+                  <ProfileAction />
+                </li>
+              </ul>
+            </Sider>
+          </>
         ) : (
           <>
             <p>
@@ -33,7 +67,14 @@ const Admin = ({
             </Link>
           </>
         )}
-      </div>
+        <Layout className='site-layout' style={{ marginLeft: 200 }}>
+          <Content>
+            <div className='site-layout-background container'>
+              <h1 className='large text-secondary'> DASHBOARD</h1>
+            </div>
+          </Content>
+        </Layout>
+      </Layout>
     </>
   );
 };

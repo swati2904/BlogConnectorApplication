@@ -11,6 +11,7 @@ import { loadUser } from "./actions/auth";
 import setToken from "./utils/setToken";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import CreateProfile from "./components/userProfile/CreateProfile";
+import EditProfile from "./components/userProfile/EditProfile";
 
 //redux
 import { Provider } from "react-redux";
@@ -40,6 +41,11 @@ const App = () => {
                 exact
                 path='/create-profile'
                 component={CreateProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/edit-profile'
+                component={EditProfile}
               />
             </Switch>
           </div>

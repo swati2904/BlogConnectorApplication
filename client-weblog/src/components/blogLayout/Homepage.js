@@ -21,18 +21,18 @@ const Homepage = ({ isAuthenticated }) => {
               Create a blog, share posts and maintain your portfolio which helps
               to other developers...
             </p>
-            <div class='buttons'>
-              <Link to='/signup' class='btn btn-primary m-2'>
+            <div className='buttons'>
+              <Link to='/signup' className='btn btn-primary m-2'>
                 Sign Up
               </Link>
-              <Link to='/login' class='btn btn-light'>
+              <Link to='/login' className='btn btn-light'>
                 Login
               </Link>
             </div>
           </div>
           <div className='col-4 rounded float-end align-items-center d-flex'>
             <img
-              class='homepage-background rounded-circle'
+              className='homepage-background rounded-circle'
               src={blogImage}
               alt='homepage'
             />
