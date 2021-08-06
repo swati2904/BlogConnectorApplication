@@ -84,7 +84,7 @@ export const addExperience = (formInput, history) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(addToast("Experience added successfully", "success"));
+    dispatch(addToast("Experience added ", "success"));
 
     history.push("/admin-profile");
   } catch (error) {
@@ -120,7 +120,7 @@ export const addEducation = (formInput, history) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(addToast("Education added successfully", "success"));
+    dispatch(addToast("Education added ", "success"));
 
     history.push("/admin-profile");
   } catch (error) {
@@ -182,7 +182,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
     try {
-      const res = await axios.delete("/api/profile");
+      await axios.delete("/api/profile");
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });

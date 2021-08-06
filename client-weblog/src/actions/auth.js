@@ -92,6 +92,11 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({
       type: LOGIN_FAIL,
     });
+    //   if(err.response.data && err.response.data.message){
+    //     // todo
+    //  }else if(err.response.data && err.response.data.errors){
+    //     // todo
+    //  }
   }
 };
 

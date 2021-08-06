@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://swati2904:swati@2904@blog-connector-cluster.o3mdb.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "secretToken"
+  "jwtSecret": "secretToken",
+  "githubClientId": "25df7245650bfda19499",
+  "githubSecret": "93a47c27a3d5c2ca5c54005754ada8cd6b4bbb93"
 }

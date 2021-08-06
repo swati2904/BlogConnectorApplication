@@ -3,13 +3,13 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const config = require("config");
-const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
-
 const User = require("../../models/User");
+
 // @route              GET api/auth
 // @description        Test route
-// @acess              Public/Private
+// @acess              Private
 
 router.get("/", auth, async (req, res) => {
   try {
@@ -23,14 +23,14 @@ router.get("/", auth, async (req, res) => {
 
 // @route              POST api/auth
 // @description        Authenticate user & get token
-// @acess              Public/Private
+// @acess              Public
 
 router.post(
   "/",
-  [
-    check("email", "Please include a valid email").isEmail(),
-    check("password", "Password is required").exists(),
-  ],
+
+  check("email", "Please include a valid email").isEmail(),
+  check("password", "Password is required").exists(),
+
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -64,7 +64,7 @@ router.post(
       jwt.sign(
         payload,
         config.get("jwtSecret"),
-        { expiresIn: 36000 },
+        { expiresIn: "5d" }, // added days
         (err, token) => {
           if (err) throw err;
           res.json({ token });
