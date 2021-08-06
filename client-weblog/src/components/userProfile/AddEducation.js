@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
-import { Form, Input, Button, Layout, DatePicker, Checkbox } from "antd";
+import { Link } from "react-router-dom";
+import { Form, Input, Button, Layout, DatePicker } from "antd";
 import { addEducation } from "../../actions/profile";
 
 import {

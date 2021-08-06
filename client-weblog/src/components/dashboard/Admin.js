@@ -2,12 +2,15 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../actions/profile";
+import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 import { Spin, Layout } from "antd";
 import { ProfileAction } from "./ProfileAction";
+import Experience from "./Experience";
+import Education from "./Education";
 
 const Admin = ({
   getCurrentProfile,
+  deleteAccount,
   auth: { user },
   profile: { profile, loading },
 }) => {
@@ -69,8 +72,25 @@ const Admin = ({
         )}
         <Layout className='site-layout' style={{ marginLeft: 200 }}>
           <Content>
-            <div className='site-layout-background container'>
+            <div className='site-layout-background container '>
               <h1 className='large text-secondary'> DASHBOARD</h1>
+              <small>Experience </small>
+              <hr></hr>
+              <Experience experience={profile.experience} />
+              <br></br>
+              <small>Education </small>
+              <hr></hr>
+              <Education education={profile.education} />
+              <hr></hr>
+              <div className='d-flex justify-content-end align-items-center my-3 mx-3'>
+                <small>All data will be removed permanently</small>
+                <button
+                  className='btn btn-danger  mx-3'
+                  onClick={() => deleteAccount()}
+                >
+                  Delete My Account
+                </button>
+              </div>
             </div>
           </Content>
         </Layout>
@@ -81,6 +101,7 @@ const Admin = ({
 
 Admin.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
 };
@@ -90,4 +111,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Admin);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Admin
+);
