@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Spin } from "antd";
 import { getProfileById } from "../../actions/profile";
+import ProfileTop from "./ProfileTop";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
@@ -31,6 +32,9 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                   Edit Profile
                 </Link>
               )}
+            <div className='card mt-4'>
+              <ProfileTop profile={profile} />
+            </div>
           </div>
         </>
       )}
