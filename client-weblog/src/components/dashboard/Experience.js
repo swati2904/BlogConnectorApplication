@@ -7,25 +7,33 @@ import formatDate from "../../utils/formatDate";
 export const Experience = ({ experience, deleteExperience }) => {
   const experiences = experience.map((expr) => (
     <div key={expr._id}>
-      <div className='card-body'>
-        <div>Comapany - {expr.company}</div>
-        <div>Position - {expr.title}</div>
-        <button
-          onClick={() => deleteExperience(expr._id)}
-          className='btn btn-danger'
-        >
-          Delete
-        </button>
-      </div>
-      <div>
-        {formatDate(expr.from)} - {expr.to ? formatDate(expr.to) : "Now"}
+      <div className='card card-body border-0 '>
+        <div className='row '>
+          <div className='col-8'>
+            <div>Comapany - {expr.company}</div>
+            <div>
+              {formatDate(expr.from)} - {expr.to ? formatDate(expr.to) : "Now"}
+            </div>
+            <div>Position - {expr.title}</div>
+            <div>Description - {expr.description}</div>
+          </div>
+          <div className='col-4 d-flex align-items-center justify-content-center'>
+            <button
+              onClick={() => deleteExperience(expr._id)}
+              className='btn btn-danger'
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+        <hr></hr>
       </div>
     </div>
   ));
   return (
     <>
-      <div className='card  ' style={{ width: "40rem" }}>
-        <div className='card-header text-center bg-success'>
+      <div className='card border-0 w-100 '>
+        <div className='card-header text-center alert-success bold fs-5'>
           Experience Deatils
         </div>
         {experiences}{" "}

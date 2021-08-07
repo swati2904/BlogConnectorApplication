@@ -19,8 +19,7 @@ const ProfileItem = ({
             <img
               src={avatar}
               alt=''
-              className='rounded-circle float-start mx-auto d-block pb-4'
-              style={{ height: "80%", width: "100%" }}
+              className='rounded-circle float-start mx-auto d-block pb-4 w-100 h-75'
             />
             <Link
               target='_blank'

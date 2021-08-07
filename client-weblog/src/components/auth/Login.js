@@ -43,7 +43,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <>
-      <div className=' container auth-page align-items-center '>
+      <div className=' container d-grid h-100 align-items-center '>
         <div className='row border shadow-lg rounded'>
           <div className='col bg-light bg-gradient p-5'>
             <h2 className='large text-secondary d-flex justify-content-center align-items-center pb-2'>

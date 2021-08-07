@@ -11,7 +11,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <div className='d-flex align-items-center'>
       <li>
         <Link to='/profiles' className='d-flex align-items-center'>
-          {/* <UserOutlined className='fs-5 mx-1' /> */}
           Bloggers
         </Link>
       </li>
@@ -45,7 +44,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </div>
   );
   return (
-    <div className='navbar bg-success w-100 bg-gradient d-flex justify-content-between  py-2 px-4 border-bottom list-unstyled  align-content-center'>
+    <div className='navbar overflow-hidden bg-success w-100 bg-gradient d-flex justify-content-between  py-2 px-4 border-bottom list-unstyled  align-content-center'>
       <h3>
         {" "}
         <Link to='/' className='d-flex align-items-center'>

@@ -50,7 +50,7 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
 
   return (
     <>
-      <div className=' container auth-page align-items-center'>
+      <div className=' container d-grid h-100 align-items-center'>
         <div className='row border shadow-lg rounded'>
           <div className='col bg-success bg-gradient  align-items-center d-flex flex-column justify-content-center '>
             <h1> Welcome!</h1>
