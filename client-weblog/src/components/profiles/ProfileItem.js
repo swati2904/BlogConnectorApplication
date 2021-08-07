@@ -22,7 +22,7 @@ const ProfileItem = ({
               className='rounded-circle float-start mx-auto d-block pb-4 w-100 h-75'
             />
             <Link
-              target='_blank'
+              // target='_blank'
               className='btn btn-outline-success '
               to={`/profile/${_id}`}
             >

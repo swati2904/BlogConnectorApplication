@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Form, Input, Button, Layout, Select } from "antd";
-import { createProfile } from "../../actions/profile";
-import { Link, withRouter } from "react-router-dom";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
+import { Link, withRouter, useRouteMatch } from "react-router-dom";
 
 import {
   ShoppingFilled,
@@ -20,44 +20,51 @@ import {
   BookFilled,
 } from "@ant-design/icons";
 
-const CreateProfile = ({ createProfile, history }) => {
-  const [formInput, setFormInput] = useState({
-    company: "",
-    website: "",
-    location: "",
-    status: "",
-    skills: "",
-    githubusername: "",
-    bio: "",
-    twitter: "",
-    facebook: "",
-    linkedin: "",
-    youtube: "",
-    instagram: "",
-  });
-  const { Option } = Select;
+const initialState = {
+  company: "",
+  website: "",
+  location: "",
+  status: "",
+  skills: "",
+  githubusername: "",
+  bio: "",
+  twitter: "",
+  facebook: "",
+  linkedin: "",
+  youtube: "",
+  instagram: "",
+};
+
+const AdminProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history,
+}) => {
+  const [formInput, setFormInput] = useState({ initialState });
+  const creatingProfile = useRouteMatch("/create-profile");
 
   const [wrapSocialInputs, toggleSocialInputs] = useState(false);
 
+  const { Option } = Select;
   const { Content } = Layout;
 
-  // const {
-  //   company,
-  //   website,
-  //   location,
-  //   status,
-  //   skills,
-  //   githubusername,
-  //   bio,
-  //   twitter,
-  //   facebook,
-  //   linkedin,
-  //   youtube,
-  //   instagram,
-  // } = formInput;
+  useEffect(() => {
+    if (!profile) getCurrentProfile();
+    if (!loading && profile) {
+      const profileData = { ...initialState };
+      for (const key in profile) {
+        if (key in profileData) profileData[key] = profile.social[key];
+      }
+
+      if (Array.isArray(profileData.skills))
+        profileData.skills = profileData.skills.join(", ");
+      setFormInput(profileData);
+    }
+  }, [loading, getCurrentProfile, profile]);
 
   const onFinish = (e) => {
-    createProfile(formInput, history);
+    createProfile(formInput, history, profile ? true : false);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -81,12 +88,17 @@ const CreateProfile = ({ createProfile, history }) => {
     <Layout>
       <Layout className='site-layout'>
         <Content>
-          <div
-            className='site-layout-background container'
-            // style={{ padding: 24, textAlign: "center" }}
-          >
-            <h3 className='fw-bolder text-black fs-2'> ADMIN PROFILE</h3>
-            <small className=' fs-6 text-secondary'>Tech Infomation</small>{" "}
+          <div className='site-layout-background container'>
+            <h1 className='text-primary'>
+              {" "}
+              {creatingProfile ? "Create your profile" : "Edit your profile"}
+            </h1>
+            <p className='lead'>
+              <i className='fas fa-user' />
+              {creatingProfile
+                ? ` Let's get some information to make your`
+                : " Add some changes to your profile"}
+            </p>{" "}
             <hr></hr>
             <Form
               {...layout}
@@ -237,7 +249,6 @@ const CreateProfile = ({ createProfile, history }) => {
               >
                 <Select
                   placeholder='Select a option and change input text above'
-                  // value={formInput.status}
                   onChange={(value) => {
                     setFormInput({ status: value });
                   }}
@@ -262,7 +273,7 @@ const CreateProfile = ({ createProfile, history }) => {
                   type='default'
                   htmlType='submit'
                   className='shadow-lg rounded my-3'
-                  // value='submit'
+                  value='submit'
                   onClick={() => toggleSocialInputs(!wrapSocialInputs)}
                 >
                   Add Social Network
@@ -376,8 +387,16 @@ const CreateProfile = ({ createProfile, history }) => {
   );
 };
 
-CreateProfile.propTypes = {
+AdminProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
-export default connect(null, { createProfile })(withRouter(CreateProfile));
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  AdminProfile
+);

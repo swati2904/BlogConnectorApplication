@@ -10,11 +10,13 @@ import Admin from "./components/dashboard/Admin";
 import { loadUser } from "./actions/auth";
 import setToken from "./utils/setToken";
 import PrivateRoute from "./components/routing/PrivateRoute";
-import CreateProfile from "./components/userProfile/CreateProfile";
-import EditProfile from "./components/userProfile/EditProfile";
+// import CreateProfile from "./components/userProfile/CreateProfile";
+// import EditProfile from "./components/userProfile/EditProfile";
+import AdminProfile from "./components/userProfile/AdminProfile";
 import AddExperience from "./components/userProfile/AddExperience";
 import AddEducation from "./components/userProfile/AddEducation";
 import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/singleProfile/Profile";
 
 //redux
 import { Provider } from "react-redux";
@@ -40,17 +42,20 @@ const App = () => {
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/profiles' component={Profiles} />
+              <Route exact path='/profile/:id' component={Profile} />
 
               <PrivateRoute exact path='/admin-profile' component={Admin} />
               <PrivateRoute
                 exact
                 path='/create-profile'
-                component={CreateProfile}
+                component={AdminProfile}
+                // component={CreateProfile}
               />
               <PrivateRoute
                 exact
                 path='/edit-profile'
-                component={EditProfile}
+                component={AdminProfile}
+                // component={EditProfile}
               />
               <PrivateRoute
                 exact

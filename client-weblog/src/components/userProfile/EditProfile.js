@@ -191,7 +191,7 @@ const EditProfile = ({
                   }
                 />
               </Form.Item>
-              <Form.Item
+              {/* <Form.Item
                 label={
                   <span>
                     <BookFilled className='site-form-item-icon text-secondary fs-4 mx-2' />
@@ -224,8 +224,8 @@ const EditProfile = ({
                   <Option value='Intern'>Intern</Option>
                   <Option value='Other'>Other</Option>
                 </Select>
-              </Form.Item>
-              {/* <Form.Item
+              </Form.Item> */}
+              <Form.Item
                 label={
                   <span>
                     <BookFilled className='site-form-item-icon text-secondary fs-4 mx-2' />
@@ -256,7 +256,7 @@ const EditProfile = ({
                   <option value='Intern'>Intern</option>
                   <option value='Other'>Other</option>
                 </select>
-              </Form.Item> */}
+              </Form.Item>
               <small className=' fs-6 text-secondary'>Social Network</small>{" "}
               <hr></hr>
               <div>
