@@ -20,9 +20,16 @@ const Admin = ({
 
   const { Content, Sider } = Layout;
 
-  return loading && profile === null ? (
-    <Spin tip='Loading...' className='position-absolute top-50 start-50'></Spin>
-  ) : (
+  return (
+    // (loading && profile === null) ? (
+    // <Spin
+    //   tip='Loading...'
+    //   className='position-absolute top-50 start-50'
+    // ></Spin>
+    // ) : (
+
+    // );
+
     <>
       <Layout>
         {profile !== null ? (
@@ -58,6 +65,31 @@ const Admin = ({
                 </li>
               </ul>
             </Sider>
+
+            <Layout className='site-layout' style={{ marginLeft: 200 }}>
+              <Content>
+                <div className='site-layout-background container '>
+                  <h1 className='large text-secondary'> DASHBOARD</h1>
+                  <small>Experience </small>
+                  <hr></hr>
+                  <Experience experience={profile.experience} />
+                  <br></br>
+                  <small>Education </small>
+                  <hr></hr>
+                  <Education education={profile.education} />
+                  <hr></hr>
+                  <div className='d-flex justify-content-end align-items-center my-3 mx-3'>
+                    <small>All data will be removed permanently</small>
+                    <button
+                      className='btn btn-danger  mx-3'
+                      onClick={() => deleteAccount()}
+                    >
+                      Delete My Account
+                    </button>
+                  </div>
+                </div>
+              </Content>
+            </Layout>
           </>
         ) : (
           <>
@@ -70,35 +102,10 @@ const Admin = ({
             </Link>
           </>
         )}
-        <Layout className='site-layout' style={{ marginLeft: 200 }}>
-          <Content>
-            <div className='site-layout-background container '>
-              <h1 className='large text-secondary'> DASHBOARD</h1>
-              <small>Experience </small>
-              <hr></hr>
-              <Experience experience={profile.experience} />
-              <br></br>
-              <small>Education </small>
-              <hr></hr>
-              <Education education={profile.education} />
-              <hr></hr>
-              <div className='d-flex justify-content-end align-items-center my-3 mx-3'>
-                <small>All data will be removed permanently</small>
-                <button
-                  className='btn btn-danger  mx-3'
-                  onClick={() => deleteAccount()}
-                >
-                  Delete My Account
-                </button>
-              </div>
-            </div>
-          </Content>
-        </Layout>
       </Layout>
     </>
   );
 };
-
 Admin.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,

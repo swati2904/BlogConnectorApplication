@@ -10,6 +10,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <div className='d-flex align-items-center'>
       <li>
+        <Link to='/profiles' className='d-flex align-items-center'>
+          {/* <UserOutlined className='fs-5 mx-1' /> */}
+          Bloggers
+        </Link>
+      </li>
+      <li>
         <Link to='/admin-profile' className='d-flex align-items-center'>
           <UserOutlined className='fs-5 mx-1' />
           Admin
@@ -27,6 +33,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
   const guestLinks = (
     <div className='d-flex '>
+      <li>
+        <Link to='/profiles'>Bloggers</Link>
+      </li>
       <li>
         <Link to='/signup'>Sign Up</Link>
       </li>

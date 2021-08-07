@@ -1,4 +1,6 @@
 import axios from "axios";
+import { addToast } from "./toast";
+import setToken from "../utils/setToken";
 import {
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
@@ -9,8 +11,6 @@ import {
   LOGOUT,
   CLEAR_PROFILE,
 } from "./types";
-import { addToast } from "./toast";
-import setToken from "../utils/setToken";
 
 // Load user
 export const loadUser = () => async (dispatch) => {
