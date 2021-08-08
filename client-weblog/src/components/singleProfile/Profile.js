@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Spin } from "antd";
 import { getProfileById } from "../../actions/profile";
 import ProfileTop from "./ProfileTop";
+import ProfileAbout from "./ProfileAbout";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
@@ -33,7 +34,19 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                 </Link>
               )}
             <div className='card mt-4'>
-              <ProfileTop profile={profile} />
+              <div className='row'>
+                <div className='col-12'>
+                  <div
+                    className='alert-success text-center'
+                    style={{ height: "150px" }}
+                  >
+                    {" "}
+                    Blogger
+                  </div>
+                  <ProfileTop profile={profile} />
+                  <ProfileAbout profile={profile} />
+                </div>
+              </div>
             </div>
           </div>
         </>

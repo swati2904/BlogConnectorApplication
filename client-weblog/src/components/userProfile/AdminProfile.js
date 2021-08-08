@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Form, Input, Button, Layout, Select } from "antd";
+import { Form, Input, Button, Layout } from "antd";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
-import { Link, withRouter, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 import {
   ShoppingFilled,
@@ -46,7 +46,6 @@ const AdminProfile = ({
 
   const [wrapSocialInputs, toggleSocialInputs] = useState(false);
 
-  const { Option } = Select;
   const { Content } = Layout;
 
   useEffect(() => {
