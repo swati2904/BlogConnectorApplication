@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getPosts } from "../../actions/post";
 import { Spin } from "antd";
 import PostItem from "./PostItem";
+import PostForm from "./PostForm";
 
 const Post = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
@@ -20,6 +21,7 @@ const Post = ({ getPosts, post: { posts, loading } }) => {
       ) : (
         <>
           <h1 className='text-success'>Posts</h1>
+          <PostForm />
           <div>
             {posts.map((post) => (
               <PostItem key={post._id} post={post} />

@@ -17,6 +17,7 @@ const PostItem = ({
   removeLike,
   deletePost,
   post: { _id, text, name, avatar, user, likes, comments, date },
+  showActions,
 }) => {
   return (
     <div>
@@ -27,27 +28,37 @@ const PostItem = ({
         </Link>
         <p>{text}</p>
         <p>Posted on {formatDate(date)}</p>
-        <button className='btn btn-light' onClick={(e) => addLike(_id)}>
-          <LikeOutlined />{" "}
-          <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-        </button>
-        <button className='btn btn-light' onClick={(e) => removeLike(_id)}>
-          <DislikeOutlined /> <span> </span>
-        </button>
-
-        <Link to={`/posts/${_id}`} className='btn btn-primary'>
-          Discussion
-          {comments.length > 0 && <span>{comments.length}</span>}
-        </Link>
-
-        {!auth.loading && user === auth.user._id && (
-          <button className='btn btn-danger' onClick={(e) => deletePost(_id)}>
-            <DeleteOutlined />
-          </button>
+        {showActions && (
+          <>
+            {" "}
+            <button className='btn btn-light' onClick={(e) => addLike(_id)}>
+              <LikeOutlined />{" "}
+              <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+            </button>
+            <button className='btn btn-light' onClick={(e) => removeLike(_id)}>
+              <DislikeOutlined /> <span> </span>
+            </button>
+            <Link to={`/posts/${_id}`} className='btn btn-primary'>
+              Discussion
+              {comments.length > 0 && <span>{comments.length}</span>}
+            </Link>
+            {!auth.loading && user === auth.user._id && (
+              <button
+                className='btn btn-danger'
+                onClick={(e) => deletePost(_id)}
+              >
+                <DeleteOutlined />
+              </button>
+            )}{" "}
+          </>
         )}
       </div>
     </div>
   );
+};
+
+PostItem.defaultProps = {
+  showActions: true,
 };
 
 PostItem.propTypes = {
