@@ -1,15 +1,15 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/blogLayout/Navbar";
-import Homepage from "./components/blogLayout/Homepage";
-import Signup from "./components/auth/Signup";
-import Login from "./components/auth/Login";
-import Toast from "./components/blogLayout/Toast";
-import Admin from "./components/dashboard/Admin";
+import PrivateRoute from "./components/routing/PrivateRoute";
 import { loadUser } from "./actions/auth";
 import setToken from "./utils/setToken";
-import PrivateRoute from "./components/routing/PrivateRoute";
+import Navbar from "./components/blogLayout/Navbar";
+import Homepage from "./components/blogLayout/Homepage";
+import Toast from "./components/blogLayout/Toast";
+import Signup from "./components/auth/Signup";
+import Login from "./components/auth/Login";
+import Admin from "./components/dashboard/Admin";
 // import CreateProfile from "./components/userProfile/CreateProfile";
 // import EditProfile from "./components/userProfile/EditProfile";
 import AdminProfile from "./components/userProfile/AdminProfile";
@@ -17,6 +17,7 @@ import AddExperience from "./components/userProfile/AddExperience";
 import AddEducation from "./components/userProfile/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/singleProfile/Profile";
+import Posts from "./components/posts/Post";
 
 //redux
 import { Provider } from "react-redux";
@@ -63,6 +64,7 @@ const App = () => {
                 component={AddExperience}
               />
               <PrivateRoute exact path='/education' component={AddEducation} />
+              <PrivateRoute exact path='/posts' component={Posts} />
             </Switch>
           </div>
         </Fragment>

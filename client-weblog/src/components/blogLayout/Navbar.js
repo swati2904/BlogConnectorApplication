@@ -15,6 +15,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </li>
       <li>
+        <Link to='/posts' className='d-flex align-items-center'>
+          Posts
+        </Link>
+      </li>
+      <li>
         <Link to='/admin-profile' className='d-flex align-items-center'>
           <UserOutlined className='fs-5 mx-1' />
           Admin
