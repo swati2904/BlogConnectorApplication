@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Spin } from "antd";
+import { Spin, Timeline } from "antd";
 import { getProfileById } from "../../actions/profile";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
-import { Timeline } from "antd";
+import ProfileContact from "./ProfileContact";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
@@ -103,6 +103,8 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                   {profile.githubusername && (
                     <ProfileGithub username={profile.githubusername} />
                   )}
+
+                  <ProfileContact profile={profile} auth={auth.user} />
                 </div>
               </div>
             </div>
