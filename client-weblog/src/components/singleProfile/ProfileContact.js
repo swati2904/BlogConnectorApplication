@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 import { MailOutlined, GithubOutlined } from "@ant-design/icons";
 import { Divider } from "antd";
 
-const ProfileContact = ({ profile: { githubusername }, auth: { email } }) => {
+const ProfileContact = ({
+  profile: {
+    githubusername,
+    user: { email },
+  },
+}) => {
   return (
     <div className='card border-0 my-1'>
       <div className='col-12 px-3 py-1'>
@@ -19,6 +24,7 @@ const ProfileContact = ({ profile: { githubusername }, auth: { email } }) => {
               </div>
             </div>
             <Divider />
+
             <div className='d-flex'>
               {" "}
               <MailOutlined className=' col-1' />
