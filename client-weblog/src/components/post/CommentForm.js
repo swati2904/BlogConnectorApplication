@@ -2,34 +2,45 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addComment } from "../../actions/post";
+import { CommentOutlined } from "@ant-design/icons";
 
 const CommentForm = ({ postId, addComment }) => {
   const [text, setText] = useState("");
 
   return (
-    <div>
-      <div className='bg-primary '>
-        <h3>Leave a Comment</h3>
+    <div className='card border-0 my-1'>
+      <div className='col-12 px-3 py-1'>
+        <div className='card px-4 bg-light py-2 my-2 '>
+          <h5> Post a Comment</h5>
+
+          <form
+            className=' my-1'
+            onSubmit={(e) => {
+              e.preventDefault();
+              addComment(postId, { text });
+              setText("");
+            }}
+          >
+            <div className='d-flex align-items-center'>
+              <textarea
+                className='border border-primary'
+                name='text'
+                cols='60'
+                rows='2'
+                placeholder='Comment the post'
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                required
+              />
+              <input
+                type='submit'
+                className='btn btn-success mx-4'
+                value='Submit'
+              />
+            </div>
+          </form>
+        </div>
       </div>
-      <form
-        className=' my-1'
-        onSubmit={(e) => {
-          e.preventDefault();
-          addComment(postId, { text });
-          setText("");
-        }}
-      >
-        <textarea
-          name='text'
-          cols='30'
-          rows='5'
-          placeholder='Comment the post'
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          required
-        />
-        <input type='submit' className='btn btn-dark my-1' value='Submit' />
-      </form>
     </div>
   );
 };
