@@ -113,3 +113,8 @@ a {
   /* height: 100vh; */
   background-size: cover;
 }
+
+.read-more-button {
+  color: var(--primary-color);
+  cursor: pointer;
+}

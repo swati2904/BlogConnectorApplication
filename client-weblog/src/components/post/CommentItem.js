@@ -17,7 +17,7 @@ const CommentItem = ({
       <div className='col-4 d-flex flex-column align-items-center '>
         <Link to={`/profile/${user}`} className='text-decoration-none'>
           <img className='rounded-circle w-75 h-25' src={avatar} alt='' />
-          <h4>{name}</h4>
+          <h4 className='text-dark'>{name}</h4>
           <p>{formatDate(date)}</p>
         </Link>
       </div>

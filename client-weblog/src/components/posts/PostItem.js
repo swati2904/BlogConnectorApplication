@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import formatDate from "../../utils/formatDate";
 import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
+import ReadMoreReact from "read-more-react";
 
 import {
   LikeOutlined,
@@ -26,7 +27,9 @@ const PostItem = ({
           <img className='round-img' src={avatar} alt='' />
           <h4>{name}</h4>
         </Link>
-        <p>{text}</p>
+        {/* <p>{text}</p> */}
+        <ReadMoreReact text={text} max={300} readMoreText='...read more' />
+
         <p>Posted on {formatDate(date)}</p>
         {showActions && (
           <>
