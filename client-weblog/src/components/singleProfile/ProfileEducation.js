@@ -9,7 +9,7 @@ const ProfileEducation = ({
   return (
     <>
       <div>
-        <h5 className='text-dark'>{school}</h5>
+        <h6 className='text-dark'>{school}</h6>
         <p className='text-dark'>
           {formatDate(from)} - {to ? formatDate(to) : "Now"}
         </p>

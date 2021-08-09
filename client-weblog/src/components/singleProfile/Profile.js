@@ -8,6 +8,7 @@ import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
+import ProfileGithub from "./ProfileGithub";
 import { Timeline } from "antd";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
@@ -52,7 +53,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                   <div className='card border-0  my-1'>
                     <div className='col-12 px-3 py-1'>
                       <div className='card px-1 bg-light py-2 my-2'>
-                        <h4 className='text-success'>Experience</h4>
+                        <h5 className='text-success mx-2'>Experience</h5>
                         {profile.experience.length > 0 ? (
                           <>
                             <Timeline className='m-3'>
@@ -68,12 +69,12 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                             </Timeline>
                           </>
                         ) : (
-                          <h4> No Experience credentials</h4>
+                          <h6> No Experience credentials</h6>
                         )}
                       </div>
 
                       <div className='card px-1 bg-light py-2 my-2'>
-                        <h4 className='text-success'>Education</h4>
+                        <h5 className='text-success mx-2'>Education</h5>
 
                         {profile.education.length > 0 ? (
                           <>
@@ -93,11 +94,15 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                             </Timeline>
                           </>
                         ) : (
-                          <h4> No Education credentials</h4>
+                          <h6> No Education credentials</h6>
                         )}
                       </div>
                     </div>
                   </div>
+
+                  {profile.githubusername && (
+                    <ProfileGithub username={profile.githubusername} />
+                  )}
                 </div>
               </div>
             </div>

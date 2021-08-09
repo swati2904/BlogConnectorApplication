@@ -9,7 +9,7 @@ const ProfileExperience = ({
   return (
     <>
       <div>
-        <h5 className='text-dark'>{company}</h5>
+        <h6 className='text-dark'>{company}</h6>
         <p className='text-dark'>
           {formatDate(from)} - {to ? formatDate(to) : "Now"}
         </p>
