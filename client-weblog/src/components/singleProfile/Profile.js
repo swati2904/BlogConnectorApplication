@@ -6,6 +6,9 @@ import { Spin } from "antd";
 import { getProfileById } from "../../actions/profile";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
+import ProfileExperience from "./ProfileExperience";
+import ProfileEducation from "./ProfileEducation";
+import { Timeline } from "antd";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
@@ -45,6 +48,56 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                   </div>
                   <ProfileTop profile={profile} />
                   <ProfileAbout profile={profile} />
+
+                  <div className='card border-0  my-1'>
+                    <div className='col-12 px-3 py-1'>
+                      <div className='card px-1 bg-light py-2 my-2'>
+                        <h4 className='text-success'>Experience</h4>
+                        {profile.experience.length > 0 ? (
+                          <>
+                            <Timeline className='m-3'>
+                              {profile.experience.map((experience) => (
+                                <Timeline.Item className='text-secondary'>
+                                  {" "}
+                                  <ProfileExperience
+                                    key={experience._id}
+                                    experience={experience}
+                                  />
+                                </Timeline.Item>
+                              ))}
+                            </Timeline>
+                          </>
+                        ) : (
+                          <h4> No Experience credentials</h4>
+                        )}
+                      </div>
+
+                      <div className='card px-1 bg-light py-2 my-2'>
+                        <h4 className='text-success'>Education</h4>
+
+                        {profile.education.length > 0 ? (
+                          <>
+                            <Timeline className='m-3'>
+                              {profile.education.map((education) => (
+                                <Timeline.Item
+                                  className='text-secondary'
+                                  color='gray'
+                                >
+                                  {" "}
+                                  <ProfileEducation
+                                    key={education._id}
+                                    education={education}
+                                  />
+                                </Timeline.Item>
+                              ))}
+                            </Timeline>
+                          </>
+                        ) : (
+                          <h4> No Education credentials</h4>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

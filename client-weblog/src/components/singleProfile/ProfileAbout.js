@@ -10,8 +10,8 @@ const ProfileAbout = ({
   },
 }) => {
   return (
-    <div className='card  border-0 my-2'>
-      <div className='col-12 px-3 py-2 '>
+    <div className='card  border-0 my-1'>
+      <div className='col-12 px-3 py-1 '>
         <div className='card px-1 bg-light py-2 my-2'>
           {bio && (
             <>

@@ -30,7 +30,7 @@ const ProfileTop = ({
             alt='homepage'
           /> */}
 
-      <div className='col-6 px-3 py-2'>
+      <div className='col-6 px-3 py-1'>
         <img
           src={avatar}
           alt=''
