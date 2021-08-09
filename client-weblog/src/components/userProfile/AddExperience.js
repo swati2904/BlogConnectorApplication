@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import { Form, Input, Button, Layout, DatePicker } from "antd";
+import { Form, Input, Button, Layout, DatePicker, Divider } from "antd";
 import { addExperience } from "../../actions/profile";
 import {
   ShoppingFilled,
@@ -60,7 +60,7 @@ const AddExperience = ({ addExperience, history }) => {
               {" "}
               Add your position and responsiblities
             </small>
-            <hr></hr>
+            <Divider />
             <Form
               {...layout}
               name='basic'

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { deleteExperience } from "../../actions/profile";
 import formatDate from "../../utils/formatDate";
+import { Divider } from "antd";
 
 export const Experience = ({ experience, deleteExperience }) => {
   const experiences = experience.map((expr) => (
@@ -26,7 +27,7 @@ export const Experience = ({ experience, deleteExperience }) => {
             </button>
           </div>
         </div>
-        <hr></hr>
+        <Divider />
       </div>
     </div>
   ));

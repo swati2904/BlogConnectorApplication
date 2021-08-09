@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import formatDate from "../../utils/formatDate";
 import { deleteEducation } from "../../actions/profile";
+import { Divider } from "antd";
 
 export const Education = ({ education, deleteEducation }) => {
   const educations = education.map((edu) => (
@@ -26,7 +27,7 @@ export const Education = ({ education, deleteEducation }) => {
             </button>
           </div>
         </div>
-        <hr></hr>
+        <Divider />
       </div>
     </div>
   ));

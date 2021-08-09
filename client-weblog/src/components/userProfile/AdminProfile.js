@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Form, Input, Button, Layout } from "antd";
+import { Form, Input, Button, Layout, Divider } from "antd";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
 import { Link, useRouteMatch } from "react-router-dom";
 
@@ -98,7 +98,7 @@ const AdminProfile = ({
                 ? ` Let's get some information to make your`
                 : " Add some changes to your profile"}
             </p>{" "}
-            <hr></hr>
+            <Divider />
             <Form
               {...layout}
               name='basic'
@@ -266,7 +266,7 @@ const AdminProfile = ({
                 </Select>
               </Form.Item> */}
               <small className=' fs-6 text-secondary'>Social Network</small>{" "}
-              <hr></hr>
+              <Divider />
               <div>
                 <Button
                   type='default'
