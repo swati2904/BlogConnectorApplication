@@ -10,18 +10,18 @@ export const Experience = ({ experience, deleteExperience }) => {
     <div key={expr._id}>
       <div className='card card-body border-0 '>
         <div className='row '>
-          <div className='col-8'>
-            <div>Comapany - {expr.company}</div>
-            <div>
+          <div className='col-8 fs-6'>
+            <h6>Comapany - {expr.company}</h6>
+            <p className='text-secondary'>
               {formatDate(expr.from)} - {expr.to ? formatDate(expr.to) : "Now"}
-            </div>
-            <div>Position - {expr.title}</div>
-            <div>Description - {expr.description}</div>
+            </p>
+            <p className='fw-light fst-italic'>{expr.title}</p>
+            <p>Description - {expr.description}</p>
           </div>
           <div className='col-4 d-flex align-items-center justify-content-center'>
             <button
               onClick={() => deleteExperience(expr._id)}
-              className='btn btn-danger'
+              className='btn alert-danger'
             >
               Delete
             </button>

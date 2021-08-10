@@ -35,6 +35,7 @@ const Admin = ({
       {profile !== null ? (
         <>
           <Sider
+            width={240}
             className='site-layout-background'
             style={{
               overflow: "auto",
@@ -65,13 +66,13 @@ const Admin = ({
             </ul>
           </Sider>
 
-          <Layout className='site-layout' style={{ marginLeft: 200 }}>
+          <Layout className='site-layout' style={{ marginLeft: 250 }}>
             <Content>
               <div className='site-layout-background container '>
                 <h1 className='large text-secondary'> DASHBOARD</h1>
                 <Experience experience={profile.experience} />
                 <Education education={profile.education} />
-                <div className='d-flex justify-content-end align-items-center my-3 mx-3'>
+                <div className='d-flex justify-content-end align-items-center my-3 mx-3 text-secondary'>
                   <small>All data will be removed permanently</small>
                   <button
                     className='btn btn-danger  mx-3'

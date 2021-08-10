@@ -8,20 +8,22 @@ import { Divider } from "antd";
 export const Education = ({ education, deleteEducation }) => {
   const educations = education.map((edu) => (
     <div key={edu._id}>
-      <div className='card card-body border-0'>
+      <div className='card card-body border-0 '>
         <div className='row'>
-          <div className='col-8'>
-            <div>School/College - {edu.school}</div>
-            <div>Degree - {edu.degree}</div>
-            <div>
+          <div className='col-8 fs-6'>
+            <h6>School/College - {edu.school}</h6>
+            <p className='text-secondary'>
               {formatDate(edu.from)} - {edu.to ? formatDate(edu.to) : "Now"}
-            </div>
-            <div> Branch - {edu.fieldofstudy}</div>
+            </p>
+            <p className='fw-light fst-italic'>{edu.degree}</p>
+
+            <p> Branch/sub. - {edu.fieldofstudy}</p>
+            <p> Description - {edu.description}</p>
           </div>
           <div className='col-4 d-flex align-items-center justify-content-center'>
             <button
               onClick={() => deleteEducation(edu._id)}
-              className='btn btn-danger'
+              className='btn alert-danger'
             >
               Delete
             </button>
