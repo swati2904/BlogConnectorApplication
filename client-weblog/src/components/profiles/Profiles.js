@@ -24,16 +24,14 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             <p>Connect with Bloggers</p>
 
             <div className='card border-0 '>
-              <div className='card-body '>
-                <div className='d-flex flex-wrap '>
-                  {profiles.length > 0 ? (
-                    profiles.map((profile) => (
-                      <ProfileItem key={profile._id} profile={profile} />
-                    ))
-                  ) : (
-                    <h4> No profile found!!!</h4>
-                  )}
-                </div>
+              <div className='d-flex flex-wrap '>
+                {profiles.length > 0 ? (
+                  profiles.map((profile) => (
+                    <ProfileItem key={profile._id} profile={profile} />
+                  ))
+                ) : (
+                  <h4> No profile found!!!</h4>
+                )}
               </div>
             </div>
           </div>

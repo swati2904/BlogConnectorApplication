@@ -12,10 +12,10 @@ const ProfileItem = ({
   },
 }) => {
   return (
-    <div className=' w-50 px-2 py-2'>
-      <div className='card bg-light'>
+    <div className='card w-50  my-1'>
+      <div className='card border-0 '>
         <div className='row '>
-          <div className='col-4 px-4 py-4 d-flex flex-column align-items-center'>
+          <div className='col-sm-4 px-4 py-4 d-flex flex-column align-items-center'>
             <img
               src={avatar}
               alt=''
@@ -29,16 +29,16 @@ const ProfileItem = ({
               View Profile
             </Link>
           </div>
-          <div className='col-8 px-4 py-4 d-flex justify-content-center'>
+          <div className='col-sm-8 px-4 py-4 d-flex justify-content-center'>
             <div>
-              <h2>{name}</h2>
-              <p>
+              <h2 className='text-capitalize'>{name}</h2>
+              <p className='text-secondary'>
                 {status} {company && <span> at {company}</span>}
               </p>
               <p>{location && <span>{location}</span>}</p>
               <div className='d-flex w-100 flex-wrap list-unstyled '>
                 {skills.slice(0, 4).map((skill, index) => (
-                  <div className='btn btn-secondary mx-1 btn-sm disabled'>
+                  <div className='btn alert-success mx-1 btn-sm disabled'>
                     {" "}
                     <li key={index}> {skill}</li>{" "}
                   </div>
