@@ -1,38 +1,19 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { addPost } from "../../actions/post";
+import React from "react";
+import { Link } from "react-router-dom";
+import { BlockOutlined } from "@ant-design/icons";
 
-const PostForm = ({ addPost }) => {
-  const [text, setText] = useState("");
-
+const PostForm = () => {
   return (
-    <div className='post-form'>
-      <form
-        className='form my-1'
-        onSubmit={(e) => {
-          e.preventDefault();
-          addPost({ text });
-          setText("");
-        }}
+    <div>
+      <Link
+        to='/create-post'
+        className='btn btn-success d-flex align-items-center w-25 justify-content-center '
       >
-        <textarea
-          name='text'
-          cols='30'
-          rows='5'
-          placeholder='Create a post'
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          required
-        />
-        <input type='submit' className='btn btn-dark my-1' value='Submit' />
-      </form>
+        <BlockOutlined className='mx-2' />
+        Create Your Blog
+      </Link>
     </div>
   );
 };
 
-PostForm.propTypes = {
-  addPost: PropTypes.func.isRequired,
-};
-
-export default connect(null, { addPost })(PostForm);
+export default PostForm;

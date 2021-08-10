@@ -23,7 +23,7 @@ const PostItem = ({
 }) => {
   return (
     <div className='card my-3'>
-      <div className='row'>
+      <div className='row bg-light'>
         <div className='col-9'>
           {" "}
           <div className='row align-items-center'>

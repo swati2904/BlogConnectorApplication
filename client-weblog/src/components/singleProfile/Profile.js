@@ -41,12 +41,9 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               <div className='row'>
                 <div className='col-12'>
                   <div
-                    className='alert-success text-center'
+                    className='alert-primary   text-center'
                     style={{ height: "150px" }}
-                  >
-                    {" "}
-                    Blogger
-                  </div>
+                  ></div>
                   <ProfileTop profile={profile} />
                   <ProfileAbout profile={profile} />
 

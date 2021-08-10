@@ -5,7 +5,6 @@ import { getPosts } from "../../actions/post";
 import { Spin, Carousel } from "antd";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
-import blogImage from "../../assets/blog.jpg";
 import createBlog from "../../assets/createblog.jpg";
 
 const Post = ({ getPosts, post: { posts, loading } }) => {
@@ -21,18 +20,14 @@ const Post = ({ getPosts, post: { posts, loading } }) => {
           className='position-absolute top-50 start-50'
         ></Spin>
       ) : (
-        <div>
-          <img src={createBlog} className='w-100' style={{ height: "300px" }} />
-          <div className=' alert-warning'>
-            <div className='container'>
-              <h1 className='text-success'>Posts</h1>
-              <PostForm />
-              <div>
-                {posts.map((post) => (
-                  <PostItem key={post._id} post={post} />
-                ))}
-              </div>{" "}
-            </div>
+        <div className='post-bg-create'>
+          <div className='container'>
+            <PostForm />
+            <div>
+              {posts.map((post) => (
+                <PostItem key={post._id} post={post} />
+              ))}
+            </div>{" "}
           </div>
         </div>
       )}
