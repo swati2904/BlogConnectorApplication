@@ -5,7 +5,8 @@ import formatDate from "../../utils/formatDate";
 import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 import ReadMoreReact from "read-more-react";
-
+import { Avatar, Image } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import {
   LikeOutlined,
   DislikeOutlined,
@@ -25,7 +26,18 @@ const SinglePost = ({
       <div className='row px-3 py-1'>
         <div className='col-4 d-flex flex-column align-items-center '>
           <Link to={`/profile/${user}`}>
-            <img className='rounded-circle' src={avatar} alt='' />
+            <Avatar
+              src={avatar}
+              size={{
+                xs: 24,
+                sm: 32,
+                md: 40,
+                lg: 64,
+                xl: 80,
+                xxl: 100,
+              }}
+              icon={<UserOutlined />}
+            />
           </Link>
 
           <p className='text-secondary'> Posted On - {formatDate(date)}</p>

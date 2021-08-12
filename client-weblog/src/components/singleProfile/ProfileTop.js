@@ -23,13 +23,6 @@ const ProfileTop = ({
 }) => {
   return (
     <>
-      {/* <img
-            // className='img-fluid'
-            style={{ height: "150px" }}
-            src={bloggerImage}  
-            alt='homepage'
-          /> */}
-
       <div className='col-6 px-3 py-1'>
         <img
           src={avatar}

@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import formatDate from "../../utils/formatDate";
 import { deleteComment } from "../../actions/post";
 import { DeleteOutlined } from "@ant-design/icons";
+import { Avatar, Image } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 
 const CommentItem = ({
   postId,
@@ -16,7 +18,19 @@ const CommentItem = ({
     <div className='row px-3 py-1'>
       <div className='col-4 d-flex flex-column align-items-center '>
         <Link to={`/profile/${user}`} className='text-decoration-none'>
-          <img className='rounded-circle w-75 h-25' src={avatar} alt='' />
+          <Avatar
+            src={avatar}
+            size={{
+              xs: 24,
+              sm: 32,
+              md: 40,
+              lg: 64,
+              xl: 80,
+              xxl: 100,
+            }}
+            shape='square'
+            icon={<UserOutlined />}
+          />
           <h4 className='text-dark'>{name}</h4>
           <p>{formatDate(date)}</p>
         </Link>

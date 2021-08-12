@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 import ReadMoreReact from "read-more-react";
 import blogImage from "../../assets/allblog.jpg";
-
+import { Avatar, Image } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import {
   LikeOutlined,
   DislikeOutlined,
@@ -32,10 +33,18 @@ const PostItem = ({
                 <h6 className='text-capitalize text-center text-success'>
                   {name}
                 </h6>
-                <img
-                  className='rounded-circle w-50 h-50 mx-auto d-block'
+                <Avatar
                   src={avatar}
-                  alt=''
+                  size={{
+                    xs: 24,
+                    sm: 32,
+                    md: 40,
+                    lg: 64,
+                    xl: 80,
+                    xxl: 100,
+                  }}
+                  className='mx-auto d-block'
+                  icon={<UserOutlined />}
                 />
 
                 <button

@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Avatar, Image } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 
 const ProfileItem = ({
   profile: {
@@ -16,16 +18,19 @@ const ProfileItem = ({
       <div className='card border-0 '>
         <div className='row '>
           <div className='col-sm-4 px-4 py-4 d-flex flex-column align-items-center'>
-            <img
+            <Avatar
               src={avatar}
-              alt=''
-              className='rounded-circle float-start mx-auto d-block pb-4 w-100 h-75'
+              size={{
+                xs: 24,
+                sm: 32,
+                md: 40,
+                lg: 64,
+                xl: 80,
+                xxl: 100,
+              }}
+              icon={<UserOutlined />}
             />
-            <Link
-              // target='_blank'
-              className='btn btn-outline-success '
-              to={`/profile/${_id}`}
-            >
+            <Link className='btn btn-outline-success ' to={`/profile/${_id}`}>
               View Profile
             </Link>
           </div>
