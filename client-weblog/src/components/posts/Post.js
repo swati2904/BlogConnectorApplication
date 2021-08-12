@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/post";
-import { Spin, Carousel } from "antd";
+import { Spin } from "antd";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
-import createBlog from "../../assets/createblog.jpg";
 
 const Post = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {

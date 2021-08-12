@@ -20,8 +20,10 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
       ) : (
         <>
           <div className='container'>
-            <h1> Bloggers</h1>
-            <p>Connect with Bloggers</p>
+            <h1 className='fs-1 text-capitalize'> users profile</h1>
+            <h5 className='fs-5 text-capitalize text-secondary mx-5 mb-3'>
+              Connect with Bloggers
+            </h5>
 
             <div className='card border-0 '>
               <div className='d-flex flex-wrap '>

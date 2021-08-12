@@ -10,6 +10,7 @@ import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
 import ProfileContact from "./ProfileContact";
+import { EditOutlined } from "@ant-design/icons";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
@@ -33,7 +34,11 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             {auth.isAuthenticated &&
               auth.loading === false &&
               auth.user._id === profile.user._id && (
-                <Link to='/edit-profile' className='btn btn-primary'>
+                <Link
+                  to='/edit-profile'
+                  className='btn alert-warning float-end  d-flex align-items-center'
+                >
+                  <EditOutlined className='mx-2' />
                   Edit Profile
                 </Link>
               )}
