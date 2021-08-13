@@ -24,13 +24,6 @@ const Admin = ({
   const { Content, Sider } = Layout;
 
   return (
-    // (loading && profile === null) ? (
-    // <Spin
-    //   tip='Loading...'
-    //   className='position-absolute top-50 start-50'
-    // ></Spin>
-    // ) : (
-    // );
     <>
       {profile !== null ? (
         <>

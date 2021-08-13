@@ -4,9 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import formatDate from "../../utils/formatDate";
 import { deleteComment } from "../../actions/post";
-import { DeleteOutlined } from "@ant-design/icons";
-import { Avatar, Image } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Avatar } from "antd";
+import { UserOutlined, DeleteOutlined } from "@ant-design/icons";
 
 const CommentItem = ({
   postId,

@@ -6,9 +6,9 @@ import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 import ReadMoreReact from "read-more-react";
 import blogImage from "../../assets/allblog.jpg";
-import { Avatar, Image } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Avatar } from "antd";
 import {
+  UserOutlined,
   LikeOutlined,
   DislikeOutlined,
   DeleteOutlined,
@@ -110,7 +110,11 @@ const PostItem = ({
         </div>
 
         <div className='col-3'>
-          <img src={blogImage} className='img-fluid rounded-start h-100' />
+          <img
+            src={blogImage}
+            alt='user post'
+            className='img-fluid rounded-start h-100'
+          />
         </div>
       </div>
     </div>

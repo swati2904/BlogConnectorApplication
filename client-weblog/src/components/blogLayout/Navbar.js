@@ -1,10 +1,13 @@
 import React from "react";
-import { AliwangwangFilled } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  AliwangwangFilled,
+  LogoutOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (

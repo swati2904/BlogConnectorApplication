@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Spin, Timeline } from "antd";
+
 import { getProfileById } from "../../actions/profile";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
@@ -10,6 +10,8 @@ import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
 import ProfileContact from "./ProfileContact";
+
+import { Spin, Timeline } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {

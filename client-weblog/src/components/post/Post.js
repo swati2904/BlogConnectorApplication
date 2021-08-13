@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Spin } from "antd";
+
 import { getPost } from "../../actions/post";
 import CommentForm from "../post/CommentForm";
 import CommentItem from "../post/CommentItem";
-import { ArrowLeftOutlined } from "@ant-design/icons";
 import SinglePost from "./SinglePost";
+
+import { Spin } from "antd";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {

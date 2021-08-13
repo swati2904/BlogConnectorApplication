@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Form, Input, Button, Layout, Divider } from "antd";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
 import { Link, useRouteMatch } from "react-router-dom";
 
+import { Form, Input, Button, Layout, Divider } from "antd";
 import {
   ShoppingFilled,
   WeiboCircleFilled,

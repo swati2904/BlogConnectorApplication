@@ -1,14 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-
 import PrivateRoute from "../routing/PrivateRoute";
 
 import Toast from "../blogLayout/Toast";
 import Signup from "../auth/Signup";
 import Login from "../auth/Login";
 import Admin from "../dashboard/Admin";
-// import CreateProfile from "../userProfile/CreateProfile";
-// import EditProfile from "../userProfile/EditProfile";
 import AdminProfile from "../userProfile/AdminProfile";
 import AddExperience from "../userProfile/AddExperience";
 import AddEducation from "../userProfile/AddEducation";
@@ -30,12 +27,7 @@ const Routes = () => {
         <Route exact path='/profile/:id' component={Profile} />
 
         <PrivateRoute exact path='/admin-profile' component={Admin} />
-        <PrivateRoute
-          exact
-          path='/create-profile'
-          component={AdminProfile}
-          // component={CreateProfile}
-        />
+        <PrivateRoute exact path='/create-profile' component={AdminProfile} />
         <PrivateRoute exact path='/edit-profile' component={AdminProfile} />
         <PrivateRoute exact path='/experience' component={AddExperience} />
         <PrivateRoute exact path='/education' component={AddEducation} />

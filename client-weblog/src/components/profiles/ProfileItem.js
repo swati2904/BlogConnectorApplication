@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Avatar, Image } from "antd";
+import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
 const ProfileItem = ({

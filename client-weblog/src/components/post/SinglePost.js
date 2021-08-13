@@ -1,16 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import formatDate from "../../utils/formatDate";
 import { connect } from "react-redux";
+
+import formatDate from "../../utils/formatDate";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 import ReadMoreReact from "read-more-react";
-import { Avatar, Image } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+
+import { Avatar } from "antd";
 import {
   LikeOutlined,
   DislikeOutlined,
   DeleteOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 
 const SinglePost = ({

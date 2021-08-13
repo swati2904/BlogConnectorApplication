@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import bloggerImage from "../../assets/bloggerProfile.jpeg";
 
 import {
   TwitterOutlined,
