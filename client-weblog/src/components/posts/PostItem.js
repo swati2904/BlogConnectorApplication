@@ -56,11 +56,14 @@ const PostItem = ({
               </Link>
             </div>
             <div className='col-9'>
-              <ReadMoreReact
-                text={text}
-                max={300}
-                readMoreText='...read more'
-              />
+              <Link to={`/posts/${_id}`} className='btn '>
+                <ReadMoreReact
+                  text={text}
+                  max={200}
+                  readMoreText='...read more'
+                />
+              </Link>
+
               <p className='fw-lighter fst-italic text-black-50 float-end'>
                 - Posted on {formatDate(date)}
               </p>
