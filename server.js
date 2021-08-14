@@ -10,6 +10,7 @@ connectDB();
 app.use(express.json());
 
 // Define routes
+app.get("/", (req, res) => res.send("GET API working"));
 
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
