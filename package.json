@@ -7,8 +7,7 @@
     "start": "node server",
     "server": "nodemon server",
     "client": "npm start --prefix client-weblog",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client-weblog && npm run build --prefix client-weblog"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -25,6 +24,7 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.12.1",
     "gravatar": "^1.8.1",
