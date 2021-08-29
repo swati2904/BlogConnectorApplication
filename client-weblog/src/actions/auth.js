@@ -1,6 +1,5 @@
-import axios from "axios";
+import api from "../utils/api";
 import { addToast } from "./toast";
-import setToken from "../utils/setToken";
 import {
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
@@ -9,17 +8,12 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_PROFILE,
 } from "./types";
 
 // Load user
 export const loadUser = () => async (dispatch) => {
-  if (localStorage.token) {
-    setToken(localStorage.token);
-  }
-
   try {
-    const res = await axios.get("/api/auth");
+    const res = await api.get("/auth");
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -33,17 +27,9 @@ export const loadUser = () => async (dispatch) => {
 
 // user signup
 
-export const signup = ({ name, email, password }) => async (dispatch) => {
-  const config = {
-    headers: {
-      "Content-type": "application/json",
-    },
-  };
-
-  const body = JSON.stringify({ name, email, password });
-
+export const signup = (formInput) => async (dispatch) => {
   try {
-    const res = await axios.post("/api/users", body, config);
+    const res = await api.post("/users", formInput);
 
     dispatch({
       type: SIGNUP_SUCCESS,
@@ -66,16 +52,10 @@ export const signup = ({ name, email, password }) => async (dispatch) => {
 // user login
 
 export const login = (email, password) => async (dispatch) => {
-  const config = {
-    headers: {
-      "Content-type": "application/json",
-    },
-  };
-
-  const body = JSON.stringify({ email, password });
+  const body = { email, password };
 
   try {
-    const res = await axios.post("/api/auth", body, config);
+    const res = await api.post("/auth", body);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -101,8 +81,4 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // Logout
-
-export const logout = () => (dispatch) => {
-  dispatch({ type: LOGOUT });
-  dispatch({ type: CLEAR_PROFILE });
-};
+export const logout = () => ({ type: LOGOUT });

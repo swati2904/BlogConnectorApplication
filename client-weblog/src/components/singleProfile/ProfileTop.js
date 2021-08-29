@@ -33,7 +33,7 @@ const ProfileTop = ({
           {status} {company && <span> at {company}</span>}
         </p>
         <p className='text-secondary'>{location && <span>{location}</span>}</p>
-        <div class='icons my-1'>
+        <div className='icons my-1'>
           {website && (
             <a href={website} target='_blank' rel='noopener noreferrer'>
               <GlobalOutlined className='site-form-item-icon text-secondary fs-4 mx-2' />

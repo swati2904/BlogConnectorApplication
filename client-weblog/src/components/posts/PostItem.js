@@ -49,7 +49,7 @@ const PostItem = ({
 
                 <button
                   type='button'
-                  class='btn btn-outline-warning btn-sm  mx-auto d-flex'
+                  className='btn btn-outline-warning btn-sm  mx-auto d-flex'
                 >
                   View Profile
                 </button>
