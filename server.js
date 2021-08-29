@@ -1,4 +1,3 @@
-const cors = require("cors");
 const express = require("express");
 const connectDB = require("./config/db");
 // const path = require("path");
@@ -9,10 +8,9 @@ connectDB();
 
 // Init middleware
 app.use(express.json());
-app.use(cors());
 
 // Define routes
-app.get("/", (req, res) => res.send("GET API working"));
+// app.get("/", (req, res) => res.send("GET API working"));
 
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
