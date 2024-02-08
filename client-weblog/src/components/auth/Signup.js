@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
-import { Link, Redirect } from "react-router-dom";
-import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
-import { connect } from "react-redux";
-import { addToast } from "../../actions/toast";
-import { signup } from "../../actions/auth";
+import React, { useState } from 'react';
+import { Form, Input, Button } from 'antd';
+import { Link, Navigate } from 'react-router-dom';
+import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux';
+import { addToast } from '../../actions/toast';
+import { signup } from '../../actions/auth';
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Signup = ({ addToast, signup, isAuthenticated }) => {
   const [formInput, setFormInput] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassowrd: "",
+    name: '',
+    email: '',
+    password: '',
+    confirmPassowrd: '',
   });
   const layout = {
     labelCol: {
@@ -32,20 +32,20 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
 
   const onFinish = async (e) => {
     if (formInput.password !== formInput.confirmPassowrd) {
-      addToast("Entered password do not match ", "danger");
+      addToast('Entered password do not match ', 'danger');
     } else {
       signup({ name, email, password });
     }
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   // page redirect if successfully signup
 
   if (isAuthenticated) {
-    return <Redirect to='/admin-profile' />;
+    return <Navigate to='/admin-profile' />;
   }
 
   return (
@@ -87,7 +87,7 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
                     <UserOutlined className='site-form-item-icon text-secondary' />
                   }
                   value={formInput.name}
-                  onChange={(e) => onInputChange("name", e.target.value)}
+                  onChange={(e) => onInputChange('name', e.target.value)}
                 />
               </Form.Item>
 
@@ -110,7 +110,7 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
                     <MailOutlined className='site-form-item-icon text-secondary' />
                   }
                   value={formInput.email}
-                  onChange={(e) => onInputChange("email", e.target.value)}
+                  onChange={(e) => onInputChange('email', e.target.value)}
                 />
               </Form.Item>
 
@@ -133,7 +133,7 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
                     <LockOutlined className='site-form-item-icon text-secondary' />
                   }
                   value={formInput.password}
-                  onChange={(e) => onInputChange("password", e.target.value)}
+                  onChange={(e) => onInputChange('password', e.target.value)}
                 />
               </Form.Item>
 
@@ -153,7 +153,7 @@ const Signup = ({ addToast, signup, isAuthenticated }) => {
                   }
                   value={formInput.confirmPassowrd}
                   onChange={(e) =>
-                    onInputChange("confirmPassowrd", e.target.value)
+                    onInputChange('confirmPassowrd', e.target.value)
                   }
                 />
               </Form.Item>

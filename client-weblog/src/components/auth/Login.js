@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
-import { Link, Redirect } from "react-router-dom";
-import { LockOutlined, MailOutlined } from "@ant-design/icons";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { login } from "../../actions/auth";
+import React, { useState } from 'react';
+import { Form, Input, Button } from 'antd';
+import { Link, Navigate } from 'react-router-dom';
+import { LockOutlined, MailOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formInput, setFormInput] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const { email, password } = formInput;
@@ -23,7 +23,7 @@ const Login = ({ login, isAuthenticated }) => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   const layout = {
@@ -38,7 +38,7 @@ const Login = ({ login, isAuthenticated }) => {
   // page redirect if successfully login
 
   if (isAuthenticated) {
-    return <Redirect to='/admin-profile' />;
+    return <Navigate to='/admin-profile' />;
   }
 
   return (
@@ -74,7 +74,7 @@ const Login = ({ login, isAuthenticated }) => {
                     <MailOutlined className='site-form-item-icon text-secondary' />
                   }
                   value={formInput.email}
-                  onChange={(e) => onInputChange("email", e.target.value)}
+                  onChange={(e) => onInputChange('email', e.target.value)}
                 />
               </Form.Item>
 
@@ -93,7 +93,7 @@ const Login = ({ login, isAuthenticated }) => {
                     <LockOutlined className='site-form-item-icon text-secondary' />
                   }
                   value={formInput.password}
-                  onChange={(e) => onInputChange("password", e.target.value)}
+                  onChange={(e) => onInputChange('password', e.target.value)}
                 />
               </Form.Item>
 

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
-import { addExperience } from "../../actions/profile";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { addExperience } from '../../actions/profile';
 
-import { Form, Input, Button, Layout, DatePicker, Divider } from "antd";
+import { Form, Input, Button, Layout, DatePicker, Divider } from 'antd';
 import {
   ShoppingFilled,
   BankFilled,
@@ -12,17 +12,17 @@ import {
   IdcardFilled,
   CopyFilled,
   CheckSquareFilled,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 const AddExperience = ({ addExperience, history }) => {
   const [formInput, setFormInput] = useState({
-    company: "",
-    title: "",
-    location: "",
-    from: "",
-    to: "",
+    company: '',
+    title: '',
+    location: '',
+    from: '',
+    to: '',
     current: false,
-    description: "",
+    description: '',
   });
   const [toDateDisabled, toggleDisable] = useState(false);
   const { Content } = Layout;
@@ -33,7 +33,7 @@ const AddExperience = ({ addExperience, history }) => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   const layout = {
@@ -54,11 +54,11 @@ const AddExperience = ({ addExperience, history }) => {
         <Content>
           <div className='site-layout-background container'>
             <h3 className='fw-bolder text-black fs-2'>
-              {" "}
+              {' '}
               EXPERIENCE INFORMATION
             </h3>
             <small className='text-secondary'>
-              {" "}
+              {' '}
               Add your position and responsiblities
             </small>
             <Divider />
@@ -82,7 +82,7 @@ const AddExperience = ({ addExperience, history }) => {
               >
                 <Input
                   value={formInput.title}
-                  onChange={(e) => onInputChange("title", e.target.value)}
+                  onChange={(e) => onInputChange('title', e.target.value)}
                 />
               </Form.Item>
               <Form.Item
@@ -96,7 +96,7 @@ const AddExperience = ({ addExperience, history }) => {
               >
                 <Input
                   value={formInput.company}
-                  onChange={(e) => onInputChange("company", e.target.value)}
+                  onChange={(e) => onInputChange('company', e.target.value)}
                 />
               </Form.Item>
 
@@ -111,7 +111,7 @@ const AddExperience = ({ addExperience, history }) => {
               >
                 <Input
                   value={formInput.location}
-                  onChange={(e) => onInputChange("location", e.target.value)}
+                  onChange={(e) => onInputChange('location', e.target.value)}
                 />
               </Form.Item>
               <Form.Item
@@ -126,7 +126,7 @@ const AddExperience = ({ addExperience, history }) => {
                 <DatePicker
                   value={formInput.from}
                   onChange={(date, dateString) =>
-                    onInputChange("from", dateString)
+                    onInputChange('from', dateString)
                   }
                 />
               </Form.Item>
@@ -162,9 +162,9 @@ const AddExperience = ({ addExperience, history }) => {
                 <DatePicker
                   value={formInput.to}
                   onChange={(date, dateString) =>
-                    onInputChange("to", dateString)
+                    onInputChange('to', dateString)
                   }
-                  disabled={toDateDisabled ? "disabled" : ""}
+                  disabled={toDateDisabled ? 'disabled' : ''}
                 />
               </Form.Item>
               <Form.Item
@@ -179,7 +179,7 @@ const AddExperience = ({ addExperience, history }) => {
                 <TextArea
                   rows={4}
                   value={formInput.description}
-                  onChange={(e) => onInputChange("description", e.target.value)}
+                  onChange={(e) => onInputChange('description', e.target.value)}
                 />
               </Form.Item>
 
@@ -198,7 +198,7 @@ const AddExperience = ({ addExperience, history }) => {
                   Submit
                 </Button>
                 <Link className='btn btn-light my-1' to='/admin-profile'>
-                  Go Back{" "}
+                  Go Back{' '}
                 </Link>
               </Form.Item>
             </Form>
@@ -213,4 +213,4 @@ AddExperience.propTypes = {
   addExperience: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addExperience })(withRouter(AddExperience));
+export default connect(null, { addExperience })(AddExperience);

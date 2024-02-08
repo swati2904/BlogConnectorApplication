@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
@@ -22,7 +22,6 @@ const PostSchema = new Schema({
       },
     },
   ],
-
   comments: [
     {
       user: {
@@ -31,6 +30,9 @@ const PostSchema = new Schema({
       text: {
         type: String,
         required: true,
+      },
+      name: {
+        type: String,
       },
       avatar: {
         type: String,
@@ -46,4 +48,5 @@ const PostSchema = new Schema({
     default: Date.now,
   },
 });
-module.exports = mongoose.model("post", PostSchema);
+
+module.exports = mongoose.model('post', PostSchema);

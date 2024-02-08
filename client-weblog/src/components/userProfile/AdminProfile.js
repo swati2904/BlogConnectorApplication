@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { createProfile, getCurrentProfile } from "../../actions/profile";
-import { Link, useRouteMatch } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createProfile, getCurrentProfile } from '../../actions/profile';
+import { Link, useMatch, useNavigate } from 'react-router-dom';
 
-import { Form, Input, Button, Layout, Divider } from "antd";
+import { Form, Input, Button, Layout, Divider } from 'antd';
 import {
   ShoppingFilled,
   WeiboCircleFilled,
@@ -18,21 +18,21 @@ import {
   YoutubeFilled,
   InstagramFilled,
   BookFilled,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 const initialState = {
-  company: "",
-  website: "",
-  location: "",
-  status: "",
-  skills: "",
-  githubusername: "",
-  bio: "",
-  twitter: "",
-  facebook: "",
-  linkedin: "",
-  youtube: "",
-  instagram: "",
+  company: '',
+  website: '',
+  location: '',
+  status: '',
+  skills: '',
+  githubusername: '',
+  bio: '',
+  twitter: '',
+  facebook: '',
+  linkedin: '',
+  youtube: '',
+  instagram: '',
 };
 
 const AdminProfile = ({
@@ -42,7 +42,7 @@ const AdminProfile = ({
   history,
 }) => {
   const [formInput, setFormInput] = useState({ initialState });
-  const creatingProfile = useRouteMatch("/create-profile");
+  const creatingProfile = useMatch('/create-profile');
 
   const [wrapSocialInputs, toggleSocialInputs] = useState(false);
 
@@ -57,7 +57,7 @@ const AdminProfile = ({
       }
 
       if (Array.isArray(profileData.skills))
-        profileData.skills = profileData.skills.join(", ");
+        profileData.skills = profileData.skills.join(', ');
       setFormInput(profileData);
     }
   }, [loading, getCurrentProfile, profile]);
@@ -67,7 +67,7 @@ const AdminProfile = ({
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   const layout = {
@@ -89,15 +89,15 @@ const AdminProfile = ({
         <Content>
           <div className='site-layout-background container'>
             <h1 className='text-primary'>
-              {" "}
-              {creatingProfile ? "Create your profile" : "Edit your profile"}
+              {' '}
+              {creatingProfile ? 'Create your profile' : 'Edit your profile'}
             </h1>
             <p className='lead'>
               <i className='fas fa-user' />
               {creatingProfile
                 ? ` Let's get some information to make your`
-                : " Add some changes to your profile"}
-            </p>{" "}
+                : ' Add some changes to your profile'}
+            </p>{' '}
             <Divider />
             <Form
               {...layout}
@@ -119,7 +119,7 @@ const AdminProfile = ({
               >
                 <Input
                   value={formInput.company}
-                  onChange={(e) => onInputChange("company", e.target.value)}
+                  onChange={(e) => onInputChange('company', e.target.value)}
                 />
               </Form.Item>
               <Form.Item
@@ -133,7 +133,7 @@ const AdminProfile = ({
               >
                 <Input
                   value={formInput.website}
-                  onChange={(e) => onInputChange("website", e.target.value)}
+                  onChange={(e) => onInputChange('website', e.target.value)}
                 />
               </Form.Item>
               <Form.Item
@@ -147,7 +147,7 @@ const AdminProfile = ({
               >
                 <Input
                   value={formInput.location}
-                  onChange={(e) => onInputChange("location", e.target.value)}
+                  onChange={(e) => onInputChange('location', e.target.value)}
                 />
               </Form.Item>
               <Form.Item
@@ -167,7 +167,7 @@ const AdminProfile = ({
               >
                 <Input
                   value={formInput.skills}
-                  onChange={(e) => onInputChange("skills", e.target.value)}
+                  onChange={(e) => onInputChange('skills', e.target.value)}
                 />
               </Form.Item>
               <Form.Item
@@ -181,7 +181,7 @@ const AdminProfile = ({
               >
                 <Input
                   value={formInput.bio}
-                  onChange={(e) => onInputChange("bio", e.target.value)}
+                  onChange={(e) => onInputChange('bio', e.target.value)}
                 />
               </Form.Item>
               <Form.Item
@@ -196,7 +196,7 @@ const AdminProfile = ({
                 <Input
                   value={formInput.githubusername}
                   onChange={(e) =>
-                    onInputChange("githubusername", e.target.value)
+                    onInputChange('githubusername', e.target.value)
                   }
                 />
               </Form.Item>
@@ -218,7 +218,7 @@ const AdminProfile = ({
                   name='status'
                   className='select-option'
                   value={formInput.status}
-                  onChange={(e) => onInputChange("status", e.target.value)}
+                  onChange={(e) => onInputChange('status', e.target.value)}
                 >
                   <option value='Developer'>Developer</option>
                   <option value='Junior Developer'>Junior Developer</option>
@@ -265,7 +265,7 @@ const AdminProfile = ({
                   <Option value='Other'>Other</Option>
                 </Select>
               </Form.Item> */}
-              <small className=' fs-6 text-secondary'>Social Network</small>{" "}
+              <small className=' fs-6 text-secondary'>Social Network</small>{' '}
               <Divider />
               <div>
                 <Button
@@ -281,7 +281,7 @@ const AdminProfile = ({
               </div>
               {wrapSocialInputs && (
                 <>
-                  {" "}
+                  {' '}
                   <Form.Item
                     label={
                       <span>
@@ -293,7 +293,7 @@ const AdminProfile = ({
                   >
                     <Input
                       value={formInput.twitter}
-                      onChange={(e) => onInputChange("twitter", e.target.value)}
+                      onChange={(e) => onInputChange('twitter', e.target.value)}
                     />
                   </Form.Item>
                   <Form.Item
@@ -308,7 +308,7 @@ const AdminProfile = ({
                     <Input
                       value={formInput.linkedin}
                       onChange={(e) =>
-                        onInputChange("linkedin", e.target.value)
+                        onInputChange('linkedin', e.target.value)
                       }
                     />
                   </Form.Item>
@@ -323,7 +323,7 @@ const AdminProfile = ({
                   >
                     <Input
                       value={formInput.youtube}
-                      onChange={(e) => onInputChange("youtube", e.target.value)}
+                      onChange={(e) => onInputChange('youtube', e.target.value)}
                     />
                   </Form.Item>
                   <Form.Item
@@ -338,7 +338,7 @@ const AdminProfile = ({
                     <Input
                       value={formInput.facebook}
                       onChange={(e) =>
-                        onInputChange("facebook", e.target.value)
+                        onInputChange('facebook', e.target.value)
                       }
                     />
                   </Form.Item>
@@ -354,7 +354,7 @@ const AdminProfile = ({
                     <Input
                       value={formInput.instagram}
                       onChange={(e) =>
-                        onInputChange("instagram", e.target.value)
+                        onInputChange('instagram', e.target.value)
                       }
                     />
                   </Form.Item>
@@ -375,7 +375,7 @@ const AdminProfile = ({
                   Submit
                 </Button>
                 <Link className='btn btn-light my-1' to='/admin-profile'>
-                  Go Back{" "}
+                  Go Back{' '}
                 </Link>
               </Form.Item>
             </Form>

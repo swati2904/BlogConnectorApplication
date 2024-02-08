@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
-import { addEducation } from "../../actions/profile";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { addEducation } from '../../actions/profile';
 
-import { Form, Input, Button, Layout, DatePicker, Divider } from "antd";
+import { Form, Input, Button, Layout, DatePicker, Divider } from 'antd';
 import {
   ShoppingFilled,
   BankFilled,
@@ -12,17 +12,17 @@ import {
   IdcardFilled,
   CopyFilled,
   CheckSquareFilled,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 const AddEducation = ({ addEducation, history }) => {
   const [formInput, setFormInput] = useState({
-    school: "",
-    degree: "",
-    fieldofstudy: "",
-    from: "",
-    to: "",
+    school: '',
+    degree: '',
+    fieldofstudy: '',
+    from: '',
+    to: '',
     current: false,
-    description: "",
+    description: '',
   });
   const [toDateDisabled, toggleDisable] = useState(false);
   const { Content } = Layout;
@@ -33,7 +33,7 @@ const AddEducation = ({ addEducation, history }) => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   const layout = {
@@ -54,11 +54,11 @@ const AddEducation = ({ addEducation, history }) => {
         <Content>
           <div className='site-layout-background container'>
             <h3 className='fw-bolder text-black fs-2'>
-              {" "}
+              {' '}
               EDUCATION INFORMATION
             </h3>
             <small className='text-secondary'>
-              {" "}
+              {' '}
               Add your education and degree
             </small>
             <Divider />
@@ -82,7 +82,7 @@ const AddEducation = ({ addEducation, history }) => {
               >
                 <Input
                   value={formInput.school}
-                  onChange={(e) => onInputChange("school", e.target.value)}
+                  onChange={(e) => onInputChange('school', e.target.value)}
                 />
               </Form.Item>
               <Form.Item
@@ -96,7 +96,7 @@ const AddEducation = ({ addEducation, history }) => {
               >
                 <Input
                   value={formInput.degree}
-                  onChange={(e) => onInputChange("degree", e.target.value)}
+                  onChange={(e) => onInputChange('degree', e.target.value)}
                 />
               </Form.Item>
 
@@ -112,7 +112,7 @@ const AddEducation = ({ addEducation, history }) => {
                 <Input
                   value={formInput.fieldofstudy}
                   onChange={(e) =>
-                    onInputChange("fieldofstudy", e.target.value)
+                    onInputChange('fieldofstudy', e.target.value)
                   }
                 />
               </Form.Item>
@@ -128,7 +128,7 @@ const AddEducation = ({ addEducation, history }) => {
                 <DatePicker
                   value={formInput.from}
                   onChange={(date, dateString) =>
-                    onInputChange("from", dateString)
+                    onInputChange('from', dateString)
                   }
                 />
               </Form.Item>
@@ -164,9 +164,9 @@ const AddEducation = ({ addEducation, history }) => {
                 <DatePicker
                   value={formInput.to}
                   onChange={(date, dateString) =>
-                    onInputChange("to", dateString)
+                    onInputChange('to', dateString)
                   }
-                  disabled={toDateDisabled ? "disabled" : ""}
+                  disabled={toDateDisabled ? 'disabled' : ''}
                 />
               </Form.Item>
               <Form.Item
@@ -181,7 +181,7 @@ const AddEducation = ({ addEducation, history }) => {
                 <TextArea
                   rows={4}
                   value={formInput.description}
-                  onChange={(e) => onInputChange("description", e.target.value)}
+                  onChange={(e) => onInputChange('description', e.target.value)}
                 />
               </Form.Item>
 
@@ -200,7 +200,7 @@ const AddEducation = ({ addEducation, history }) => {
                   Submit
                 </Button>
                 <Link className='btn btn-light my-1' to='/admin-profile'>
-                  Go Back{" "}
+                  Go Back{' '}
                 </Link>
               </Form.Item>
             </Form>
@@ -215,4 +215,4 @@ AddEducation.propTypes = {
   addEducation: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addEducation })(withRouter(AddEducation));
+export default connect(null, { addEducation })(AddEducation);

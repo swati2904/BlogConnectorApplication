@@ -1,12 +1,12 @@
-import React from "react";
-import blogImage from "../../assets/blog.jpg";
-import { Link, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React from 'react';
+import blogImage from '../../assets/blog.jpg';
+import { Link, Navigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Homepage = ({ isAuthenticated }) => {
   if (isAuthenticated) {
-    return <Redirect to='/admin-profile' />;
+    return <Navigate to='/admin-profile' />;
   }
   return (
     <>
