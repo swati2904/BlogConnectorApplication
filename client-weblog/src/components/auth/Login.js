@@ -49,7 +49,7 @@ const Login = ({ login, isAuthenticated }) => {
             <h2 className='large text-secondary d-flex justify-content-center align-items-center pb-2'>
               Login
             </h2>
-
+            <br />
             <Form
               {...layout}
               name='basic'
